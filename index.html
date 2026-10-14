@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -34,12 +35,16 @@ h2{color:var(--g)}.products{display:grid;grid-template-columns:repeat(auto-fit,m
 <div id="result" class="hidden"><h2>আপনার অর্ডার</h2><div id="summary" class="admin"></div><p id="total"></p>
 <div class="actions"><button id="wa" class="wa">💚 WhatsApp-এ অর্ডার পাঠান</button><button id="copy" class="light">📋 অর্ডার কপি করুন</button><a class="btn fb" href="https://www.facebook.com/share/1B4GXsK83R/" target="_blank" rel="noopener">🔵 Facebook-এ যোগাযোগ করুন</a><button id="cancel" class="cancel">❌ অর্ডার বাতিল করুন</button></div>
 <p class="small">বাতিল বাটন এই পেজের অর্ডার মুছবে। WhatsApp-এ পাঠানো অর্ডার বাতিল করতে বিক্রেতাকে আলাদাভাবে জানান।</p></div></section>
-<section class="panel"><h2>⚙️ পণ্যের নাম ও দাম সম্পাদনা</h2><p class="small">এখানে বদলালে এই পেজেই পরিবর্তন দেখা যাবে। সব ক্রেতার জন্য স্থায়ী করতে নিচের DEFAULT_PRODUCTS তালিকা কোডে বদলে GitHub-এ Commit করুন।</p>
-<button id="toggle" class="light">পণ্য সম্পাদনা খুলুন</button><div id="editor" class="hidden"></div><button id="save" class="hidden">পরিবর্তন দেখান</button></section>
+<section class="panel"><h2>⚙️ পণ্য ম্যানেজমেন্ট</h2>
+<p class="small">এখান থেকে পণ্যের নাম, দাম, প্যাক সাইজ ও ছবি পরিবর্তন করুন। নতুন পণ্য যোগ বা পণ্য মুছতেও পারবেন। “সেভ” করলে এই ব্রাউজারে পরিবর্তন থাকবে।</p>
+<div class="actions"><button id="toggle" class="light">এডিটর খুলুন / বন্ধ করুন</button><button id="addProduct">➕ নতুন পণ্য যোগ করুন</button><button id="save">💾 পরিবর্তন সেভ করুন</button><button id="resetProducts" class="cancel">ডিফল্ট পণ্য ফিরিয়ে আনুন</button></div>
+<div id="editor" class="hidden"></div><p id="saveStatus" class="small" role="status"></p>
+<p class="small"><b>গুরুত্বপূর্ণ:</b> এই সংস্করণে সেভ করা পণ্য ও ছবি একই ব্রাউজার/ডিভাইসে থাকবে। সব ক্রেতার মোবাইলে একই পরিবর্তন দেখাতে অনলাইন ডেটাবেস ও অ্যাডমিন লগইন যুক্ত করতে হবে।</p></section>
 </main>
 <footer><h2 style="color:white">MS STORE &amp; STOP</h2><p>WhatsApp: 01969730222</p><a style="color:white" href="https://www.facebook.com/share/1B4GXsK83R/" target="_blank" rel="noopener">Facebook পেজ</a></footer>
 <script>
 const WA="8801969730222";
+const STORAGE_KEY="ms-store-stop-products-v2";
 const DEFAULT_PRODUCTS=[
 {id:"apple",name:"আপেল",price:350,unit:"প্রতি কেজি",emoji:"🍎",image:""},
 {id:"mixednuts",name:"মিক্সড বাদাম",price:220,unit:"প্রতি ২৫০ গ্রাম",emoji:"🥜",image:""},
@@ -63,14 +68,87 @@ const DEFAULT_PRODUCTS=[
 {id:"garlic",name:"রসুনের আচার",price:200,unit:"প্রতি বয়াম",emoji:"🫙",image:""},
 {id:"lemon",name:"লেবুর আচার",price:180,unit:"প্রতি বয়াম",emoji:"🍋",image:""}
 ];
-let items=DEFAULT_PRODUCTS.map(x=>({...x})),orderText="";
+const cloneDefaults=()=>DEFAULT_PRODUCTS.map(x=>({...x}));
+let items=(()=>{try{const saved=localStorage.getItem(STORAGE_KEY);return saved?JSON.parse(saved):cloneDefaults()}catch(e){return cloneDefaults()}})(),orderText="";
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const money=n=>"৳"+Number(n).toLocaleString("en-BD");
-function render(){const root=document.getElementById("products");root.innerHTML="";items.forEach(p=>{let d=document.createElement("div");d.className="card";let pic=p.image?`<img class="pic" style="width:100%;object-fit:contain" src="${esc(p.image)}" alt="${esc(p.name)}">`:`<div class="pic">${esc(p.emoji)}</div>`;d.innerHTML=`${pic}<h3>${esc(p.name)}</h3><p>${esc(p.unit)}</p><p class="price">${money(p.price)}</p><label>পরিমাণ<br><input class="qty" id="q-${esc(p.id)}" type="number" min="0" step="0.5" value="0"></label>`;root.appendChild(d)})}
-function editor(){const e=document.getElementById("editor");e.innerHTML="";items.forEach((p,i)=>{let d=document.createElement("div");d.className="admin";d.innerHTML=`<label>পণ্যের নাম</label><input data-i="${i}" data-f="name" value="${esc(p.name)}"><label>দাম (টাকা)</label><input data-i="${i}" data-f="price" type="number" min="0" value="${p.price}"><label>একক/প্যাক সাইজ</label><input data-i="${i}" data-f="unit" value="${esc(p.unit)}"><label>ছবির ফাইলপথ</label><input data-i="${i}" data-f="image" value="${esc(p.image)}" placeholder="assets/orange.jpg">`;e.appendChild(d)})}
-document.getElementById("toggle").onclick=()=>{let e=document.getElementById("editor"),s=document.getElementById("save");e.classList.toggle("hidden");s.classList.toggle("hidden");if(!e.classList.contains("hidden"))editor()};
-document.getElementById("save").onclick=()=>{document.querySelectorAll("#editor [data-i]").forEach(el=>{let p=items[+el.dataset.i];p[el.dataset.f]=el.dataset.f==="price"?Math.max(0,Number(el.value)||0):el.value.trim()});render();alert("এই পেজে পরিবর্তন হয়েছে। সব ক্রেতার জন্য স্থায়ী করতে কোডে DEFAULT_PRODUCTS বদলে GitHub-এ Commit করুন।")};
-document.getElementById("form").onsubmit=e=>{e.preventDefault();let chosen=[],sum=0;items.forEach(p=>{let q=Number(document.getElementById("q-"+p.id)?.value)||0;if(q>0){let sub=q*Number(p.price);sum+=sub;chosen.push(`${p.name} — ${q} ${p.unit} × ${money(p.price)} = ${money(sub)}`)}});if(!chosen.length){alert("অন্তত একটি পণ্যের পরিমাণ দিন।");return}orderText=`MS STORE & STOP — নতুন অর্ডার\\n\\nনাম: ${document.getElementById("name").value.trim()}\\nমোবাইল: ${document.getElementById("phone").value.trim()}\\nঠিকানা: ${document.getElementById("address").value.trim()}\\n\\nপণ্য:\\n${chosen.join("\\n")}\\n\\nপণ্যের মোট মূল্য: ${money(sum)}\\nডেলিভারি চার্জ: পরে নিশ্চিত হবে\\nনির্দেশনা: ${document.getElementById("note").value.trim()||"নেই"}`;document.getElementById("summary").textContent=orderText;document.getElementById("total").textContent="পণ্যের মোট মূল্য: "+money(sum);document.getElementById("result").classList.remove("hidden");document.getElementById("result").scrollIntoView({behavior:"smooth"})};
+function render(){
+ const root=document.getElementById("products");root.innerHTML="";
+ items.forEach(p=>{
+  let d=document.createElement("div");d.className="card";
+  let pic=p.image?`<img class="pic" style="width:100%;object-fit:contain" src="${esc(p.image)}" alt="${esc(p.name)}">`:`<div class="pic">${esc(p.emoji||"🛍️")}</div>`;
+  d.innerHTML=`${pic}<h3>${esc(p.name)}</h3><p>${esc(p.unit)}</p><p class="price">${money(p.price)}</p><label>পরিমাণ<br><input class="qty" id="q-${esc(p.id)}" type="number" min="0" step="0.5" value="0"></label>`;
+  root.appendChild(d);
+ });
+}
+function editor(){
+ const e=document.getElementById("editor");e.innerHTML="";
+ items.forEach((p,i)=>{
+  let d=document.createElement("div");d.className="admin";
+  const preview=p.image?`<img src="${esc(p.image)}" alt="ছবির প্রিভিউ" style="max-width:130px;max-height:110px;display:block;object-fit:contain;margin:8px 0">`:`<div style="font-size:32px">${esc(p.emoji||"🛍️")}</div>`;
+  d.innerHTML=`<h3>পণ্য ${i+1}</h3><label>পণ্যের নাম</label><input data-i="${i}" data-f="name" value="${esc(p.name)}" required>
+  <label>দাম (টাকা)</label><input data-i="${i}" data-f="price" type="number" min="0" value="${Number(p.price)||0}">
+  <label>একক/প্যাক সাইজ</label><input data-i="${i}" data-f="unit" value="${esc(p.unit)}">
+  <label>ইমোজি (ছবি না দিলে)</label><input data-i="${i}" data-f="emoji" value="${esc(p.emoji||"🛍️")}">
+  <label>মোবাইল থেকে ছবি বাছাই করুন</label><input type="file" accept="image/*" data-image-i="${i}">
+  ${preview}<button type="button" class="cancel" data-delete="${i}">🗑️ এই পণ্য মুছুন</button>`;
+  e.appendChild(d);
+ });
+ e.querySelectorAll("[data-image-i]").forEach(inp=>inp.addEventListener("change",async ev=>{
+  const file=ev.target.files&&ev.target.files[0];if(!file)return;
+  if(!file.type.startsWith("image/")){alert("একটি ছবির ফাইল বাছাই করুন।");return}
+  if(file.size>3*1024*1024){alert("ছবিটি ৩ MB-এর চেয়ে ছোট বাছাই করুন।");return}
+  try{
+   const data=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(file)});
+   items[Number(ev.target.dataset.imageI)].image=data;editor();
+  }catch(err){alert("ছবি পড়া যায়নি। আবার চেষ্টা করুন।")}
+ }));
+ e.querySelectorAll("[data-delete]").forEach(btn=>btn.addEventListener("click",()=>{
+  const i=Number(btn.dataset.delete);
+  if(confirm(`“${items[i].name}” পণ্যটি মুছবেন?`)){items.splice(i,1);editor();render()}
+ }));
+}
+function collectEditor(){
+ document.querySelectorAll("#editor [data-i]").forEach(el=>{
+  const p=items[Number(el.dataset.i)];if(!p)return;
+  const f=el.dataset.f;
+  p[f]=f==="price"?Math.max(0,Number(el.value)||0):el.value.trim();
+ });
+}
+document.getElementById("toggle").onclick=()=>{
+ const e=document.getElementById("editor");e.classList.toggle("hidden");
+ if(!e.classList.contains("hidden"))editor();
+};
+document.getElementById("addProduct").onclick=()=>{
+ collectEditor();
+ items.push({id:"product-"+Date.now(),name:"নতুন পণ্য",price:0,unit:"প্রতি প্যাক",emoji:"🛍️",image:""});
+ document.getElementById("editor").classList.remove("hidden");editor();
+};
+document.getElementById("save").onclick=()=>{
+ collectEditor();
+ try{
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(items));
+  render();editor();
+  document.getElementById("saveStatus").textContent="✅ পরিবর্তন এই ব্রাউজারে সেভ হয়েছে। অন্য ক্রেতাদেরও দেখাতে অনলাইন ডেটাবেস যুক্ত করতে হবে।";
+ }catch(e){
+  document.getElementById("saveStatus").textContent="সেভ করা যায়নি। ছবির ফাইলগুলো ছোট করে আবার চেষ্টা করুন।";
+  alert("ব্রাউজারের স্টোরেজ পূর্ণ হতে পারে। ছবির ফাইল ছোট করুন বা কিছু ছবি সরিয়ে আবার সেভ করুন।");
+ }
+};
+document.getElementById("resetProducts").onclick=()=>{
+ if(confirm("সব সম্পাদনা মুছে ডিফল্ট পণ্যের তালিকা ফিরিয়ে আনবেন?")){
+  items=cloneDefaults();localStorage.removeItem(STORAGE_KEY);render();editor();
+  document.getElementById("saveStatus").textContent="ডিফল্ট পণ্যের তালিকা ফিরিয়ে আনা হয়েছে।";
+ }
+};
+document.getElementById("form").onsubmit=e=>{
+ e.preventDefault();let chosen=[],sum=0;
+ items.forEach(p=>{let q=Number(document.getElementById("q-"+p.id)?.value)||0;if(q>0){let sub=q*Number(p.price);sum+=sub;chosen.push(`${p.name} — ${q} ${p.unit} × ${money(p.price)} = ${money(sub)}`)}});
+ if(!chosen.length){alert("অন্তত একটি পণ্যের পরিমাণ দিন।");return}
+ orderText=`MS STORE & STOP — নতুন অর্ডার\n\nনাম: ${document.getElementById("name").value.trim()}\nমোবাইল: ${document.getElementById("phone").value.trim()}\nঠিকানা: ${document.getElementById("address").value.trim()}\n\nপণ্য:\n${chosen.join("\n")}\n\nপণ্যের মোট মূল্য: ${money(sum)}\nডেলিভারি চার্জ: পরে নিশ্চিত হবে\nনির্দেশনা: ${document.getElementById("note").value.trim()||"নেই"}`;
+ document.getElementById("summary").textContent=orderText;document.getElementById("total").textContent="পণ্যের মোট মূল্য: "+money(sum);
+ document.getElementById("result").classList.remove("hidden");document.getElementById("result").scrollIntoView({behavior:"smooth"});
+};
 document.getElementById("wa").onclick=()=>{if(orderText)window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(orderText),"_blank","noopener")};
 document.getElementById("copy").onclick=async()=>{try{await navigator.clipboard.writeText(orderText);alert("অর্ডার কপি হয়েছে")}catch(e){alert("কপি করা যায়নি; স্ক্রিনে থাকা বিবরণ ব্যবহার করুন")}};
 document.getElementById("cancel").onclick=()=>{if(confirm("এই পেজে তৈরি অর্ডার বাতিল করবেন? WhatsApp-এ পাঠানো অর্ডার বিক্রেতাকে আলাদাভাবে জানাতে হবে.")){orderText="";document.getElementById("form").reset();items.forEach(p=>{let q=document.getElementById("q-"+p.id);if(q)q.value=0});document.getElementById("result").classList.add("hidden")}};
