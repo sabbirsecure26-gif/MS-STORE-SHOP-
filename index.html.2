@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#075b2a">
+<meta name="description" content="MS STORE & SHOP — ফলমূল, বাদাম, খেজুর, আচার, মধু ও ঘি">
+<title>MS STORE & SHOP</title>
+<style>
+:root{--green:#075b2a;--green2:#0b7a3b;--mint:#eaf7ee;--ink:#17231b;--muted:#66736a;--line:#e2e9e3;--white:#fff;--bg:#f7faf7;--red:#b42318;--shadow:0 10px 28px #153b2010}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;background:var(--bg);color:var(--ink)}button,input,textarea,select{font:inherit}button{cursor:pointer}.wrap{width:min(1120px,94%);margin:auto}.topbar{background:var(--green);color:white;text-align:center;padding:8px 12px;font-size:13px}.header{background:white;position:sticky;top:0;z-index:5;box-shadow:0 2px 14px #00000008}.headrow{display:flex;align-items:center;gap:14px;padding:14px 0}.brand{display:flex;align-items:center;gap:10px;min-width:max-content}.logo{width:45px;height:45px;border-radius:14px;background:var(--green);display:grid;place-items:center;color:white;font-size:25px}.brand strong{display:block;color:var(--green);font-size:18px}.brand small{display:block;color:var(--muted);font-size:11px}.search{flex:1;display:flex;gap:8px}.search input{width:100%;min-width:0;border:1px solid var(--line);border-radius:12px;padding:12px 14px;outline-color:var(--green)}.btn{border:0;border-radius:11px;background:var(--green);color:white;padding:11px 15px;font-weight:700}.btn:hover{background:var(--green2)}.btn.light{background:var(--mint);color:var(--green)}.btn.outline{background:white;color:var(--green);border:1px solid #b8d6c0}.btn.danger{background:#fff0ee;color:var(--red)}.cartbtn{white-space:nowrap}.hero{margin:22px auto;background:linear-gradient(120deg,#075b2a,#138447);border-radius:24px;color:white;padding:clamp(24px,5vw,52px);display:grid;grid-template-columns:1.4fr .6fr;gap:20px;align-items:center;overflow:hidden}.hero h1{font-size:clamp(27px,4vw,44px);line-height:1.25;margin:0 0 14px}.hero p{max-width:600px;color:#e1f6e7;line-height:1.8;margin:0 0 20px}.heroart{font-size:clamp(70px,12vw,125px);text-align:center;filter:drop-shadow(0 12px 10px #003b1b55)}.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 0 16px}.sectionhead h2{margin:0;font-size:23px}.sectionhead p{margin:4px 0 0;color:var(--muted);font-size:13px}.categories{display:flex;gap:8px;overflow:auto;padding:2px 0 10px}.chip{white-space:nowrap;border:1px solid var(--line);border-radius:99px;background:white;padding:9px 14px;color:#344239}.chip.active{background:var(--green);color:white;border-color:var(--green)}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.product{background:white;border:1px solid var(--line);border-radius:17px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;min-width:0}.productimg{height:175px;background:#f0f7f1;display:grid;place-items:center;position:relative;overflow:hidden}.productimg img{width:100%;height:100%;object-fit:cover}.productemoji{font-size:65px}.tag{position:absolute;top:10px;left:10px;background:#fff;border-radius:99px;padding:5px 9px;font-size:11px;color:var(--green);font-weight:800}.productbody{padding:13px;display:flex;flex-direction:column;gap:7px;flex:1}.productbody h3{margin:0;font-size:16px}.muted{color:var(--muted);font-size:12px}.price{font-weight:850;color:var(--green);font-size:19px}.price small{font-size:12px;font-weight:500;color:var(--muted)}.productbody p{margin:0;color:var(--muted);font-size:12px;line-height:1.6;flex:1}.productactions{display:flex;gap:7px;margin-top:6px}.productactions button{flex:1;padding:9px 6px;font-size:12px}.empty{grid-column:1/-1;text-align:center;padding:38px 12px;background:white;border:1px dashed #cbd9ce;border-radius:16px;color:var(--muted)}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:28px 0}.feature{background:white;border:1px solid var(--line);border-radius:15px;padding:17px}.feature b{display:block;margin:7px 0}.feature span{font-size:13px;color:var(--muted)}footer{background:#102b1b;color:#e7f5ea;margin-top:38px;padding:30px 0}.footgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:22px}footer p,footer a{color:#c4d8c9;font-size:13px;line-height:1.8}footer a{display:block;text-decoration:none}.footbottom{border-top:1px solid #ffffff20;margin-top:20px;padding-top:14px;font-size:12px;color:#b8cdbd}.floatwa{position:fixed;right:16px;bottom:16px;z-index:8;background:#16a34a;color:white;text-decoration:none;border-radius:50px;padding:13px 17px;box-shadow:0 6px 22px #0002;font-weight:800}.modal{display:none;position:fixed;inset:0;z-index:20;background:#07170dc9;padding:14px;overflow:auto;align-items:center;justify-content:center}.modal.show{display:flex}.dialog{background:white;width:min(650px,100%);max-height:94vh;overflow:auto;border-radius:20px;padding:20px;box-shadow:0 20px 70px #0003}.dialog.wide{width:min(900px,100%)}.dialoghead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}.dialoghead h2{margin:0;font-size:21px}.xbtn{border:0;border-radius:9px;background:#f0f3f0;padding:8px 12px;font-size:20px}.field{display:grid;gap:6px;margin-bottom:12px}.field label{font-size:13px;font-weight:750}.field input,.field textarea,.field select{width:100%;padding:11px 12px;border:1px solid #d5dfd7;border-radius:10px;outline-color:var(--green);background:white}.field textarea{min-height:75px;resize:vertical}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.notice{border-radius:10px;padding:11px 13px;font-size:13px;background:#f1f7f2;color:#284e33;margin:10px 0;line-height:1.6}.notice.error{background:#fff0ee;color:#a1241a}.notice:empty{display:none}.cartline{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}.qty{display:flex;align-items:center;gap:8px}.qty button{border:1px solid var(--line);background:white;border-radius:7px;width:28px;height:28px}.totalrow{display:flex;justify-content:space-between;font-weight:850;font-size:18px;padding:16px 0}.adminnav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.adminnav button.active{background:var(--green);color:white}.tablewrap{overflow:auto}.admintable{width:100%;border-collapse:collapse;font-size:13px}.admintable th,.admintable td{border-bottom:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}.admintable th{background:#f6faf6}.hidden{display:none!important}.small{font-size:12px;color:var(--muted)}.loading{opacity:.65;pointer-events:none}
+@media(max-width:800px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.headrow{flex-wrap:wrap}.brand{flex:1}.search{order:3;flex-basis:100%}.hero{grid-template-columns:1fr}.heroart{display:none}.footgrid{grid-template-columns:1fr 1fr}.footgrid>div:first-child{grid-column:1/-1}}
+@media(max-width:560px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.productimg{height:140px}.productbody{padding:10px}.productbody h3{font-size:14px}.price{font-size:17px}.hero{margin-top:14px;border-radius:18px}.features{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.dialog{padding:15px}.footgrid{grid-template-columns:1fr}.footgrid>div:first-child{grid-column:auto}.brand strong{font-size:16px}.cartbtn{padding:10px 12px}}
+</style>
+</head>
+<body>
+<div class="topbar">🌿 মানসম্মত পণ্য • যত্নসহকারে প্যাকিং • সহজে অর্ডার করুন</div>
+<header class="header"><div class="wrap headrow">
+  <a class="brand" href="#" style="text-decoration:none"><div class="logo">🛍️</div><div><strong>MS STORE & SHOP</strong><small>আপনার বিশ্বস্ত অনলাইন শপ</small></div></a>
+  <div class="search"><input id="searchInput" type="search" placeholder="পণ্য খুঁজুন — আম, খেজুর, মধু..." aria-label="পণ্য খুঁজুন"><button class="btn" id="searchBtn">খুঁজুন</button></div>
+  <button class="btn cartbtn" id="openCart">🛒 কার্ট <span id="cartCount">0</span></button>
+</div></header>
+<main class="wrap">
+  <section class="hero"><div><h1>বিশুদ্ধ পণ্য, আপনার দোরগোড়ায়</h1><p>ফলমূল, বাদাম, খেজুর, আচার, মধু ও ঘি—আপনার পছন্দের পণ্য বেছে নিন এবং সহজেই অর্ডার করুন।</p><button class="btn" style="background:white;color:var(--green)" onclick="document.getElementById('productsSection').scrollIntoView({behavior:'smooth'})">পণ্য দেখুন ↓</button></div><div class="heroart">🍎 🥜 🍯</div></section>
+  <section id="productsSection">
+    <div class="sectionhead"><div><h2>আমাদের পণ্য</h2><p>আপনার পছন্দের পণ্য কার্টে যোগ করুন</p></div><button class="btn light" id="refreshProducts">↻ রিফ্রেশ</button></div>
+    <div class="categories" id="categories"></div><div class="grid" id="productGrid"><div class="empty">পণ্য লোড হচ্ছে...</div></div>
+  </section>
+  <section class="features">
+    <div class="feature"><div>🚚</div><b>সহজ অর্ডার</b><span>ফোন বা WhatsApp-এর মাধ্যমে অর্ডার নিশ্চিত করুন।</span></div>
+    <div class="feature"><div>🌱</div><b>পণ্যের যত্ন</b><span>পণ্য ও অর্ডারের তথ্য পরিষ্কারভাবে দেখুন।</span></div>
+    <div class="feature"><div>💬</div><b>সরাসরি যোগাযোগ</b><span>অর্ডার নিয়ে প্রশ্ন থাকলে আমাদের সঙ্গে যোগাযোগ করুন।</span></div>
+  </section>
+</main>
+<footer><div class="wrap"><div class="footgrid"><div><h3>MS STORE & SHOP</h3><p>ফলমূল, বাদাম, খেজুর, আচার, মধু ও ঘি—আপনার কেনাকাটা সহজ করাই আমাদের লক্ষ্য।</p></div><div><b>দ্রুত লিংক</b><a href="#productsSection">সব পণ্য</a><a href="#" id="footerCart">শপিং কার্ট</a></div><div><b>যোগাযোগ</b><p>WhatsApp-এ অর্ডার ও যোগাযোগ করুন।</p><button class="btn" id="footerAdmin">অ্যাডমিন লগইন</button></div></div><div class="footbottom">© <span id="year"></span> MS STORE & SHOP. সর্বস্বত্ব সংরক্ষিত।</div></div></footer>
+<a class="floatwa" id="whatsappLink" target="_blank" rel="noopener">☏ WhatsApp</a>
+
+<div class="modal" id="cartModal"><div class="dialog"><div class="dialoghead"><h2>🛒 আপনার কার্ট</h2><button class="xbtn" data-close="cartModal">×</button></div><div id="cartLines"></div><div class="totalrow"><span>সর্বমোট</span><span id="cartTotal">৳০</span></div><h3>ডেলিভারির তথ্য</h3><form id="checkoutForm"><div class="field"><label for="customerName">আপনার নাম *</label><input id="customerName" required maxlength="100" autocomplete="name"></div><div class="field"><label for="customerPhone">মোবাইল নম্বর *</label><input id="customerPhone" required type="tel" maxlength="20" autocomplete="tel" placeholder="01XXXXXXXXX"></div><div class="field"><label for="customerAddress">সম্পূর্ণ ঠিকানা *</label><textarea id="customerAddress" required maxlength="600" autocomplete="street-address"></textarea></div><div class="field"><label for="customerNote">অতিরিক্ত তথ্য (ঐচ্ছিক)</label><textarea id="customerNote" maxlength="500"></textarea></div><div id="checkoutMessage" class="notice"></div><button class="btn" style="width:100%" type="submit">WhatsApp-এ অর্ডার পাঠান</button><p class="small">অর্ডারটি WhatsApp-এ পাঠানোর আগে আপনার তথ্য ও পণ্যের তালিকা যাচাই করুন।</p></form></div></div>
+
+<div class="modal" id="adminModal"><div class="dialog wide"><div class="dialoghead"><h2>🔐 স্টোর অ্যাডমিন</h2><button class="xbtn" data-close="adminModal">×</button></div>
+  <div id="adminLoginPane"><p class="muted">Supabase Auth-এ তৈরি করা অ্যাডমিন ইমেইল ও পাসওয়ার্ড দিয়ে লগইন করুন।</p><form id="adminLoginForm"><div class="field"><label for="adminEmail">অ্যাডমিন ইমেইল</label><input id="adminEmail" type="email" required autocomplete="username"></div><div class="field"><label for="adminPassword">পাসওয়ার্ড</label><input id="adminPassword" type="password" required autocomplete="current-password"></div><div id="loginMessage" class="notice"></div><button class="btn" type="submit">লগইন করুন</button></form></div>
+  <div id="adminPanel" class="hidden">
+    <div class="notice" id="adminStatus">লগইন সফল।</div><div class="adminnav"><button class="btn light active" data-tab="productsTab">পণ্য ব্যবস্থাপনা</button><button class="btn light" data-tab="ordersTab">অর্ডার দেখুন</button><button class="btn danger" id="logoutBtn">লগআউট</button></div>
+    <section id="productsTab"><h3 id="productFormTitle">নতুন পণ্য যোগ করুন</h3><form id="productForm"><input id="productId" type="hidden"><div class="formgrid">
+      <div class="field"><label for="pName">পণ্যের নাম *</label><input id="pName" required maxlength="120"></div><div class="field"><label for="pCategory">ক্যাটাগরি *</label><select id="pCategory" required><option>ফলমূল</option><option>বাদাম</option><option>খেজুর</option><option>আচার</option><option>মধু</option><option>ঘি</option><option>অন্যান্য</option></select></div>
+      <div class="field"><label for="pPrice">দাম (টাকা) *</label><input id="pPrice" type="number" min="0" step="0.01" required></div><div class="field"><label for="pUnit">একক</label><input id="pUnit" value="প্রতি কেজি" maxlength="40"></div>
+      <div class="field"><label for="pEmoji">ইমোজি (ঐচ্ছিক)</label><input id="pEmoji" value="🛍️" maxlength="10"></div><div class="field"><label for="pTag">ট্যাগ (ঐচ্ছিক)</label><input id="pTag" maxlength="40" placeholder="জনপ্রিয় / নতুন"></div>
+    </div><div class="field"><label for="pDescription">বর্ণনা</label><textarea id="pDescription" maxlength="1000"></textarea></div><div class="field"><label for="pImage">পণ্যের ছবি আপলোড</label><input id="pImage" type="file" accept="image/png,image/jpeg,image/webp"><span class="small">JPG, PNG বা WebP ছবি ব্যবহার করুন। Storage bucket-এর নাম: product-images</span></div><div class="field"><label for="pImageUrl">ছবির URL (ঐচ্ছিক)</label><input id="pImageUrl" type="url" placeholder="https://..."></div><div id="productMessage" class="notice"></div><button class="btn" type="submit" id="saveProductBtn">পণ্য সংরক্ষণ</button> <button class="btn light" type="button" id="cancelEditBtn">ফর্ম পরিষ্কার</button></form>
+    <h3 style="margin-top:25px">বর্তমান পণ্য</h3><div class="tablewrap"><table class="admintable"><thead><tr><th>পণ্য</th><th>দাম</th><th>অ্যাকশন</th></tr></thead><tbody id="adminProductsBody"></tbody></table></div></section>
+    <section id="ordersTab" class="hidden"><h3>গ্রাহকের অর্ডার</h3><p class="small">নতুন অর্ডার দেখতে রিফ্রেশ করুন। গ্রাহকের তথ্য গোপন রাখুন।</p><button class="btn light" id="refreshOrders">অর্ডার রিফ্রেশ</button><div id="ordersMessage" class="notice"></div><div class="tablewrap"><table class="admintable"><thead><tr><th>তারিখ</th><th>গ্রাহক</th><th>অর্ডার</th><th>মোট</th><th>স্ট্যাটাস</th><th></th></tr></thead><tbody id="ordersBody"></tbody></table></div></section>
+  </div>
+</div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+"use strict";
+/* SUPABASE SETTINGS: আপনার প্রজেক্ট URL এবং publishable key বসান। sb_secret key কখনো এখানে বসাবেন না। */
+const SUPABASE_URL = "https://biboavcdgvsiiximfhhg.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_MS0iEreqkhsedG15jlaeLQ_haBGmFJk";
+const WA_NUMBER = "8801969730222";
+const SUPABASE_READY = /^https:\/\/.+\.supabase\.co$/.test(SUPABASE_URL) && !!SUPABASE_ANON_KEY && !SUPABASE_ANON_KEY.startsWith("YOUR_");
+const db = SUPABASE_READY && window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+const DEFAULT_PRODUCTS = [
+{id:"demo-apple",name:"আপেল",category:"ফলমূল",price:350,unit:"প্রতি কেজি",emoji:"🍎",image_url:"",tag:"জনপ্রিয়",description:""},
+{id:"demo-orange",name:"কমলা",category:"ফলমূল",price:220,unit:"প্রতি কেজি",emoji:"🍊",image_url:"",tag:"",description:""},
+{id:"demo-grapes",name:"আঙুর",category:"ফলমূল",price:350,unit:"প্রতি কেজি",emoji:"🍇",image_url:"",tag:"",description:""},
+{id:"demo-mango",name:"আম",category:"ফলমূল",price:160,unit:"প্রতি কেজি",emoji:"🥭",image_url:"",tag:"মৌসুমি",description:""},
+{id:"demo-almond",name:"কাঠবাদাম",category:"বাদাম",price:900,unit:"প্রতি কেজি",emoji:"🥜",image_url:"",tag:"",description:""},
+{id:"demo-date",name:"খেজুর",category:"খেজুর",price:450,unit:"প্রতি কেজি",emoji:"🌴",image_url:"",tag:"",description:""},
+{id:"demo-honey",name:"খাঁটি মধু",category:"মধু",price:650,unit:"প্রতি কেজি",emoji:"🍯",image_url:"",tag:"",description:""},
+{id:"demo-ghee",name:"ঘি",category:"ঘি",price:850,unit:"প্রতি কেজি",emoji:"🫙",image_url:"",tag:"",description:""}
+];
+const $=id=>document.getElementById(id);
+let products=[...DEFAULT_PRODUCTS],cart={},activeCategory="সব",adminUser=null,adminProducts=[],editingImageUrl="";
+const money=n=>"৳"+Number(n||0).toLocaleString("bn-BD",{maximumFractionDigits:2});
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function msg(id,text,error=false){const el=$(id);if(el){el.textContent=text||"";el.classList.toggle("error",!!error)}}
+function openModal(id){$(id).classList.add("show")}
+function closeModal(id){$(id).classList.remove("show")}
+document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",()=>closeModal(b.dataset.close)));
+document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)m.classList.remove("show")}));
+$("year").textContent=new Date().getFullYear();
+$("whatsappLink").href="https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent("আসসালামু আলাইকুম, MS STORE & SHOP থেকে পণ্য সম্পর্কে জানতে চাই।");
+function renderCategories(){
+ const cats=["সব",...new Set(products.map(p=>p.category||"অন্যান্য"))];
+ $("categories").innerHTML=cats.map(c=>`<button class="chip ${c===activeCategory?"active":""}" data-category="${esc(c)}">${esc(c)}</button>`).join("");
+ $("categories").querySelectorAll("button").forEach(b=>b.onclick=()=>{activeCategory=b.dataset.category;renderCategories();renderProducts()});
+}
+function renderProducts(){
+ const q=$("searchInput").value.trim().toLocaleLowerCase("bn");
+ const list=products.filter(p=>(activeCategory==="সব"||p.category===activeCategory)&&(!q||`${p.name} ${p.category} ${p.description||""}`.toLocaleLowerCase("bn").includes(q)));
+ $("productGrid").innerHTML=list.length?list.map(p=>`<article class="product"><div class="productimg">${p.image_url?`<img src="${esc(p.image_url)}" alt="${esc(p.name)}" loading="lazy" onerror="this.remove()">`:`<span class="productemoji">${esc(p.emoji||"🛍️")}</span>`}${p.tag?`<span class="tag">${esc(p.tag)}</span>`:""}</div><div class="productbody"><h3>${esc(p.name)}</h3><div class="muted">${esc(p.category||"অন্যান্য")}</div><div class="price">${money(p.price)} <small>/ ${esc(p.unit||"একক")}</small></div><p>${esc(p.description||"")}</p><div class="productactions"><button class="btn" data-add="${esc(p.id)}">কার্টে যোগ</button><button class="btn light" data-buy="${esc(p.id)}">কিনুন</button></div></div></article>`).join(""):`<div class="empty">কোনো পণ্য পাওয়া যায়নি। অন্য নামে খুঁজুন।</div>`;
+ $("productGrid").querySelectorAll("[data-add]").forEach(b=>b.onclick=()=>addCart(b.dataset.add));
+ $("productGrid").querySelectorAll("[data-buy]").forEach(b=>b.onclick=()=>{addCart(b.dataset.buy);renderCart();openModal("cartModal")});
+}
+function addCart(id){const p=products.find(x=>String(x.id)===String(id));if(!p)return;cart[id]=(cart[id]||0)+1;renderCartCount();msg("checkoutMessage","পণ্য কার্টে যোগ হয়েছে।");}
+function renderCartCount(){$("cartCount").textContent=Object.values(cart).reduce((a,b)=>a+b,0)}
+function cartItems(){return Object.entries(cart).map(([id,qty])=>({product:products.find(p=>String(p.id)===String(id)),qty})).filter(x=>x.product)}
+function renderCart(){
+ const items=cartItems();
+ $("cartLines").innerHTML=items.length?items.map(({product:p,qty})=>`<div class="cartline"><div><b>${esc(p.name)}</b><div class="muted">${money(p.price)} / ${esc(p.unit||"একক")}</div></div><div class="qty"><button data-minus="${esc(p.id)}">−</button><span>${qty}</span><button data-plus="${esc(p.id)}">+</button></div><b>${money(Number(p.price)*qty)}</b></div>`).join(""):`<div class="empty">আপনার কার্ট খালি। আগে পণ্য যোগ করুন।</div>`;
+ $("cartTotal").textContent=money(items.reduce((s,x)=>s+Number(x.product.price)*x.qty,0));
+ $("cartLines").querySelectorAll("[data-minus]").forEach
