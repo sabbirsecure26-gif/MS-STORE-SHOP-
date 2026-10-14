@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MS STORE &amp; STOP</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#fffdf3;color:#183b24}
+header{background:#075b2a;color:white;text-align:center;padding:24px 10px}
+h1{margin:0;font-size:30px}
+.hero{text-align:center;padding:30px 15px;background:#e9f5df}
+.hero h2{font-size:28px;color:#075b2a}
+button{background:#075b2a;color:white;border:0;border-radius:8px;padding:10px 14px;font-size:15px}
+main{max-width:900px;margin:auto;padding:20px}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.item{background:white;padding:18px;border-radius:14px;text-align:center;border:1px solid #dce8d7}
+.emoji{font-size:42px}
+.price{font-weight:bold;color:#075b2a}
+footer{text-align:center;background:#075b2a;color:white;padding:22px;margin-top:25px}
+a{color:inherit}
+</style>
+</head>
+<body>
+<header>
+<h1>🌿 MS STORE &amp; STOP</h1>
+<p>প্রকৃতির সেরা, আপনার জন্য</p>
+</header>
+<section class="hero">
+<h2>স্বাগতম আমাদের স্টোরে!</h2>
+<p>🍎 ফলমূল • 🥜 বাদাম • 🌴 খেজুর • 🫙 আচার</p>
+<p>আপনার পছন্দের পণ্য বেছে নিন।</p>
+</section>
+<main>
+<h2>🛍️ আমাদের পণ্য</h2>
+<div class="products">
+<div class="item"><div class="emoji">🍎</div><h3>আপেল</h3><p>প্রতি কেজি</p><p class="price">৳৩৫০</p><button onclick="order('আপেল')">অর্ডার করুন</button></div>
+<div class="item"><div class="emoji">🥜</div><h3>মিক্সড বাদাম</h3><p>প্রতি ২৫০ গ্রাম</p><p class="price">৳২২০</p><button onclick="order('মিক্সড বাদাম')">অর্ডার করুন</button></div>
+<div class="item"><div class="emoji">🌴</div><h3>খেজুর</h3><p>প্রতি ৫০০ গ্রাম</p><p class="price">৳২৫০</p><button onclick="order('খেজুর')">অর্ডার করুন</button></div>
+<div class="item"><div class="emoji">🫙</div><h3>মিক্সড আচার</h3><p>প্রতি বয়াম</p><p class="price">৳১৮০</p><button onclick="order('মিক্সড আচার')">অর্ডার করুন</button></div>
+</div>
+<p style="text-align:center;margin-top:25px">আরও পণ্যের জন্য আমাদের সঙ্গে যোগাযোগ করুন।</p>
+</main>
+<footer>
+<h3>MS STORE &amp; STOP</h3>
+<p>ফলমূল | বাদাম | খেজুর | আচার</p>
+<p>অর্ডার করতে Facebook পেজে মেসেজ দিন।</p>
+</footer>
+<script>
+function order(product){
+alert("আপনি "+product+" অর্ডার করতে চান। আমাদের Facebook পেজে মেসেজ দিন।");
+}
+</script>
+</body>
+</html>
