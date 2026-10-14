@@ -1,157 +1,78 @@
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MS STORE &amp; STOP | Online Shop</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MS STORE &amp; STOP</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#fffdf2;color:#183b24}
-header{background:#075b2a;color:white;text-align:center;padding:24px 12px}
-header h1{margin:0;font-size:28px}
-.hero{text-align:center;padding:28px 12px;background:#e7f4dc}
-.hero h2{font-size:27px}
-main{max-width:850px;margin:auto;padding:18px}
-.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.card{background:white;border:1px solid #d8e4d4;border-radius:14px;padding:14px;text-align:center}
-.emoji{font-size:42px}
-.card h3{margin:10px 0}
-.price{font-weight:bold;color:#075b2a}
-input,textarea{width:100%;padding:12px;margin:6px 0 12px;border:1px solid #bbb;border-radius:8px;font-size:16px}
-.qty{width:75px;text-align:center}
-button,.btn{display:inline-block;border:0;border-radius:8px;padding:12px 14px;background:#075b2a;color:white;font-size:15px;text-decoration:none;cursor:pointer}
-.secondary{background:#1769d2}
-.whatsapp{background:#168b45}
-.actions{display:grid;gap:10px;margin-top:15px}
-#summary{white-space:pre-wrap;background:#f1f6ec;padding:12px;border-radius:8px}
-footer{text-align:center;padding:22px;background:#075b2a;color:white;margin-top:25px}
-.small{font-size:13px;color:#555}
-@media(max-width:360px){.products{grid-template-columns:1fr}}
-</style>
-</head>
+:root{--g:#075b2a;--p:#eaf5e3;--cream:#fffdf2;--line:#d8e4d4}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--cream);color:#173b25}
+header,footer{background:var(--g);color:white;text-align:center;padding:20px}
+.logo{width:160px;height:160px;object-fit:contain;border-radius:50%;background:var(--cream)}
+.hero{text-align:center;background:var(--p);padding:28px 12px}main{max-width:1100px;margin:auto;padding:16px}
+h2{color:var(--g)}.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card,.panel{background:white;border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center;margin-bottom:12px}
+.pic{height:105px;display:grid;place-items:center;font-size:56px;background:#f8faf4;border-radius:10px}
+.price{font-weight:bold;color:var(--g);font-size:19px}input,textarea{font:inherit;width:100%;padding:11px;border:1px solid #bbc8ba;border-radius:8px;margin:5px 0 10px}
+.qty{width:90px}button,.btn{border:0;border-radius:8px;padding:12px;background:var(--g);color:white;font:inherit;cursor:pointer;text-decoration:none;display:inline-block}
+.actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px}.wa{background:#168b45}.fb{background:#1769d2}.cancel{background:#a62929}.light{background:#e9f1e5;color:var(--g)}
+.hidden{display:none!important}.small{font-size:13px;color:#59635a;line-height:1.6}.admin{background:#f5f8ef;border:1px dashed #9bb69c;border-radius:10px;padding:12px;margin:10px 0}
+@media(max-width:450px){.products{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:9px}}
+</style></head>
 <body>
-<header>
-<h1>🌿 MS STORE &amp; STOP</h1>
-<p>প্রকৃতির সেরা, আপনার জন্য</p>
-</header>
-
-<section class="hero">
-<h2>স্বাগতম আমাদের স্টোরে!</h2>
-<p>🍎 ফলমূল • 🥜 বাদাম • 🌴 খেজুর • 🫙 আচার</p>
-<p>আপনার পছন্দের পণ্য বেছে অর্ডার করুন।</p>
-</section>
-
+<header><img class="logo" src="assets/logo.png" alt="MS STORE & STOP লোগো"><h1>MS STORE &amp; STOP</h1><p>প্রকৃতির সেরা, আপনার জন্য 🌿</p></header>
+<section class="hero"><h2>স্বাগতম আমাদের স্টোরে!</h2><p>🍎 ফলমূল • 🥜 বাদাম • 🌴 খেজুর • 🫙 আচার • 🍯 মধু • 🧈 ঘি</p><p>পণ্য বেছে পরিমাণ দিন, তারপর অর্ডার তৈরি করুন।</p></section>
 <main>
-<h2>🛍️ আমাদের পণ্য</h2>
-<p class="small">দামগুলো নমুনা হিসেবে দেওয়া। বিক্রির আগে আপনার আসল দাম বসিয়ে নিন।</p>
-
-<div class="products">
-<div class="card">
-<div class="emoji">🍎</div><h3>আপেল</h3>
-<p>প্রতি কেজি</p><p class="price">৳৩৫০</p>
-<label>পরিমাণ (কেজি)<br><input class="qty" id="q0" type="number" min="0" step="0.5" value="0"></label>
-</div>
-<div class="card">
-<div class="emoji">🥜</div><h3>মিক্সড বাদাম</h3>
-<p>প্রতি ২৫০ গ্রাম</p><p class="price">৳২২০</p>
-<label>পরিমাণ (প্যাকেট)<br><input class="qty" id="q1" type="number" min="0" step="1" value="0"></label>
-</div>
-<div class="card">
-<div class="emoji">🌴</div><h3>খেজুর</h3>
-<p>প্রতি ৫০০ গ্রাম</p><p class="price">৳২৫০</p>
-<label>পরিমাণ (প্যাকেট)<br><input class="qty" id="q2" type="number" min="0" step="1" value="0"></label>
-</div>
-<div class="card">
-<div class="emoji">🫙</div><h3>মিক্সড আচার</h3>
-<p>প্রতি বয়াম</p><p class="price">৳১৮০</p>
-<label>পরিমাণ (বয়াম)<br><input class="qty" id="q3" type="number" min="0" step="1" value="0"></label>
-</div>
-</div>
-
-<h2>📝 অর্ডারের তথ্য</h2>
-<form id="orderForm">
-<label>আপনার নাম *</label>
-<input id="customer" required placeholder="সম্পূর্ণ নাম">
-<label>মোবাইল নম্বর *</label>
-<input id="phone" required type="tel" inputmode="tel" placeholder="01XXXXXXXXX">
-<label>সম্পূর্ণ ডেলিভারি ঠিকানা *</label>
-<textarea id="address" required rows="3" placeholder="জেলা, উপজেলা, এলাকা ও বাড়ির ঠিকানা"></textarea>
-<label>অতিরিক্ত নির্দেশনা (ঐচ্ছিক)</label>
-<textarea id="note" rows="2" placeholder="কোনো বিশেষ নির্দেশনা থাকলে লিখুন"></textarea>
-<button type="submit" style="width:100%">অর্ডারের বিবরণ তৈরি করুন</button>
-</form>
-
-<div id="result" hidden>
-<h2>আপনার অর্ডার</h2>
-<div id="summary"></div>
-<div class="actions">
-<button class="whatsapp" type="button" onclick="sendWhatsApp()">💚 WhatsApp-এ অর্ডার পাঠান</button>
-<button class="secondary" type="button" onclick="copyOrder()">📋 অর্ডার কপি করুন</button>
-<a class="btn secondary" href="https://www.facebook.com/share/1B4GXsK83R/" target="_blank" rel="noopener">🔵 Facebook পেজে যোগাযোগ করুন</a>
-</div>
-<p class="small">WhatsApp-এ পাঠানোর পর বিক্রেতার সঙ্গে অর্ডার নিশ্চিত করুন।</p>
-</div>
+<h2>🛍️ আমাদের পণ্য</h2><p class="small">দামগুলো নমুনা। বিক্রি শুরুর আগে প্রকৃত দাম বসিয়ে নিন।</p>
+<div id="products" class="products"></div>
+<section class="panel" id="order"><h2>📝 অর্ডারের তথ্য</h2>
+<form id="form">
+<label>আপনার নাম *</label><input id="name" required placeholder="সম্পূর্ণ নাম" autocomplete="name">
+<label>মোবাইল নম্বর *</label><input id="phone" required type="tel" placeholder="01XXXXXXXXX" autocomplete="tel">
+<label>সম্পূর্ণ ঠিকানা *</label><textarea id="address" required rows="3" placeholder="জেলা, উপজেলা, এলাকা ও বাড়ির ঠিকানা"></textarea>
+<label>অতিরিক্ত নির্দেশনা</label><textarea id="note" rows="2" placeholder="ঐচ্ছিক"></textarea>
+<button type="submit" style="width:100%">অর্ডারের বিবরণ তৈরি করুন</button></form>
+<div id="result" class="hidden"><h2>আপনার অর্ডার</h2><div id="summary" class="admin"></div><p id="total"></p>
+<div class="actions"><button id="wa" class="wa">💚 WhatsApp-এ অর্ডার পাঠান</button><button id="copy" class="light">📋 অর্ডার কপি করুন</button><a class="btn fb" href="https://www.facebook.com/share/1B4GXsK83R/" target="_blank" rel="noopener">🔵 Facebook-এ যোগাযোগ করুন</a><button id="cancel" class="cancel">❌ অর্ডার বাতিল করুন</button></div>
+<p class="small">বাতিল বাটন এই পেজের অর্ডার মুছবে। WhatsApp-এ পাঠানো অর্ডার বাতিল করতে বিক্রেতাকে আলাদাভাবে জানান।</p></div></section>
+<section class="panel"><h2>⚙️ পণ্যের নাম ও দাম সম্পাদনা</h2><p class="small">এখানে বদলালে এই পেজেই পরিবর্তন দেখা যাবে। সব ক্রেতার জন্য স্থায়ী করতে নিচের DEFAULT_PRODUCTS তালিকা কোডে বদলে GitHub-এ Commit করুন।</p>
+<button id="toggle" class="light">পণ্য সম্পাদনা খুলুন</button><div id="editor" class="hidden"></div><button id="save" class="hidden">পরিবর্তন দেখান</button></section>
 </main>
-
-<footer>
-<h3>MS STORE &amp; STOP</h3>
-<p>ফলমূল • বাদাম • খেজুর • আচার</p>
-<p>ধন্যবাদ আমাদের স্টোরে আসার জন্য ❤️</p>
-</footer>
-
+<footer><h2 style="color:white">MS STORE &amp; STOP</h2><p>WhatsApp: 01969730222</p><a style="color:white" href="https://www.facebook.com/share/1B4GXsK83R/" target="_blank" rel="noopener">Facebook পেজ</a></footer>
 <script>
-const products=[
-{name:"আপেল",price:350,unit:"কেজি"},
-{name:"মিক্সড বাদাম",price:220,unit:"প্যাকেট (২৫০ গ্রাম)"},
-{name:"খেজুর",price:250,unit:"প্যাকেট (৫০০ গ্রাম)"},
-{name:"মিক্সড আচার",price:180,unit:"বয়াম"}
+const WA="8801969730222";
+const DEFAULT_PRODUCTS=[
+{id:"apple",name:"আপেল",price:350,unit:"প্রতি কেজি",emoji:"🍎",image:""},
+{id:"mixednuts",name:"মিক্সড বাদাম",price:220,unit:"প্রতি ২৫০ গ্রাম",emoji:"🥜",image:""},
+{id:"dates",name:"খেজুর",price:250,unit:"প্রতি ৫০০ গ্রাম",emoji:"🌴",image:""},
+{id:"pickle",name:"মিক্সড আচার",price:180,unit:"প্রতি বয়াম",emoji:"🫙",image:""},
+{id:"orange",name:"কমলা",price:220,unit:"প্রতি কেজি",emoji:"🍊",image:""},
+{id:"grapes",name:"আঙুর",price:350,unit:"প্রতি কেজি",emoji:"🍇",image:""},
+{id:"cashew",name:"কাজুবাদাম",price:380,unit:"প্রতি ২৫০ গ্রাম",emoji:"🥜",image:""},
+{id:"pistachio",name:"পেস্তা বাদাম",price:450,unit:"প্রতি ২৫০ গ্রাম",emoji:"🥜",image:""},
+{id:"blackseed",name:"কালোজিরা খেজুর",price:300,unit:"প্রতি ৫০০ গ্রাম",emoji:"🌴",image:""},
+{id:"mango-pickle",name:"আমের আচার",price:180,unit:"প্রতি বয়াম",emoji:"🥭",image:""},
+{id:"malta",name:"মাল্টা",price:240,unit:"প্রতি কেজি",emoji:"🍊",image:""},
+{id:"mango",name:"আম",price:160,unit:"প্রতি কেজি",emoji:"🥭",image:""},
+{id:"almond",name:"কাঠবাদাম",price:300,unit:"প্রতি ২৫০ গ্রাম",emoji:"🥜",image:""},
+{id:"medjool",name:"মেডজুল খেজুর",price:650,unit:"প্রতি ৫০০ গ্রাম",emoji:"🌴",image:""},
+{id:"olive",name:"জলপাইয়ের আচার",price:200,unit:"প্রতি বয়াম",emoji:"🫙",image:""},
+{id:"boroi",name:"বরইয়ের আচার",price:180,unit:"প্রতি বয়াম",emoji:"🫙",image:""},
+{id:"honey",name:"মধু",price:350,unit:"প্রতি ৫০০ গ্রাম",emoji:"🍯",image:""},
+{id:"ghee",name:"ঘি",price:450,unit:"প্রতি ৫০০ গ্রাম",emoji:"🧈",image:""},
+{id:"chilli",name:"ঝাল মরিচের আচার",price:180,unit:"প্রতি বয়াম",emoji:"🌶️",image:""},
+{id:"garlic",name:"রসুনের আচার",price:200,unit:"প্রতি বয়াম",emoji:"🫙",image:""},
+{id:"lemon",name:"লেবুর আচার",price:180,unit:"প্রতি বয়াম",emoji:"🍋",image:""}
 ];
-let orderText="";
-
-document.getElementById("orderForm").addEventListener("submit",function(e){
- e.preventDefault();
- let lines=[],total=0;
- products.forEach((p,i)=>{
-  const qty=Number(document.getElementById("q"+i).value)||0;
-  if(qty<0){return;}
-  if(qty>0){
-   const subtotal=qty*p.price;
-   total+=subtotal;
-   lines.push(p.name+" — "+qty+" "+p.unit+" × ৳"+p.price+" = ৳"+subtotal);
-  }
- });
- if(!lines.length){
-  alert("অন্তত একটি পণ্যের পরিমাণ নির্বাচন করুন।");
-  return;
- }
- const customer=document.getElementById("customer").value.trim();
- const phone=document.getElementById("phone").value.trim();
- const address=document.getElementById("address").value.trim();
- const note=document.getElementById("note").value.trim();
- orderText="MS STORE & STOP — নতুন অর্ডার\n\n"+
- "নাম: "+customer+"\nমোবাইল: "+phone+
- "\nঠিকানা: "+address+"\n\nপণ্য:\n"+lines.join("\n")+
- "\n\nপণ্যের মোট মূল্য: ৳"+total+
- "\nডেলিভারি চার্জ: পরে নিশ্চিত হবে"+
- "\n\nনির্দেশনা: "+(note||"নেই");
- document.getElementById("summary").textContent=orderText;
- document.getElementById("result").hidden=false;
- document.getElementById("result").scrollIntoView({behavior:"smooth"});
-});
-
-function sendWhatsApp(){
- const url="https://wa.me/8801969730222?text="+encodeURIComponent(orderText);
- window.open(url,"_blank");
-}
-async function copyOrder(){
- try{
-  await navigator.clipboard.writeText(orderText);
-  alert("অর্ডারের বিবরণ কপি হয়েছে।");
- }catch(e){
-  alert("অর্ডারের বিবরণ কপি করা যায়নি। স্ক্রিন থেকে দেখে লিখে নিতে পারেন।");
- }
-}
-</script>
-</body>
-</html>
+let items=DEFAULT_PRODUCTS.map(x=>({...x})),orderText="";
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money=n=>"৳"+Number(n).toLocaleString("en-BD");
+function render(){const root=document.getElementById("products");root.innerHTML="";items.forEach(p=>{let d=document.createElement("div");d.className="card";let pic=p.image?`<img class="pic" style="width:100%;object-fit:contain" src="${esc(p.image)}" alt="${esc(p.name)}">`:`<div class="pic">${esc(p.emoji)}</div>`;d.innerHTML=`${pic}<h3>${esc(p.name)}</h3><p>${esc(p.unit)}</p><p class="price">${money(p.price)}</p><label>পরিমাণ<br><input class="qty" id="q-${esc(p.id)}" type="number" min="0" step="0.5" value="0"></label>`;root.appendChild(d)})}
+function editor(){const e=document.getElementById("editor");e.innerHTML="";items.forEach((p,i)=>{let d=document.createElement("div");d.className="admin";d.innerHTML=`<label>পণ্যের নাম</label><input data-i="${i}" data-f="name" value="${esc(p.name)}"><label>দাম (টাকা)</label><input data-i="${i}" data-f="price" type="number" min="0" value="${p.price}"><label>একক/প্যাক সাইজ</label><input data-i="${i}" data-f="unit" value="${esc(p.unit)}"><label>ছবির ফাইলপথ</label><input data-i="${i}" data-f="image" value="${esc(p.image)}" placeholder="assets/orange.jpg">`;e.appendChild(d)})}
+document.getElementById("toggle").onclick=()=>{let e=document.getElementById("editor"),s=document.getElementById("save");e.classList.toggle("hidden");s.classList.toggle("hidden");if(!e.classList.contains("hidden"))editor()};
+document.getElementById("save").onclick=()=>{document.querySelectorAll("#editor [data-i]").forEach(el=>{let p=items[+el.dataset.i];p[el.dataset.f]=el.dataset.f==="price"?Math.max(0,Number(el.value)||0):el.value.trim()});render();alert("এই পেজে পরিবর্তন হয়েছে। সব ক্রেতার জন্য স্থায়ী করতে কোডে DEFAULT_PRODUCTS বদলে GitHub-এ Commit করুন।")};
+document.getElementById("form").onsubmit=e=>{e.preventDefault();let chosen=[],sum=0;items.forEach(p=>{let q=Number(document.getElementById("q-"+p.id)?.value)||0;if(q>0){let sub=q*Number(p.price);sum+=sub;chosen.push(`${p.name} — ${q} ${p.unit} × ${money(p.price)} = ${money(sub)}`)}});if(!chosen.length){alert("অন্তত একটি পণ্যের পরিমাণ দিন।");return}orderText=`MS STORE & STOP — নতুন অর্ডার\\n\\nনাম: ${document.getElementById("name").value.trim()}\\nমোবাইল: ${document.getElementById("phone").value.trim()}\\nঠিকানা: ${document.getElementById("address").value.trim()}\\n\\nপণ্য:\\n${chosen.join("\\n")}\\n\\nপণ্যের মোট মূল্য: ${money(sum)}\\nডেলিভারি চার্জ: পরে নিশ্চিত হবে\\nনির্দেশনা: ${document.getElementById("note").value.trim()||"নেই"}`;document.getElementById("summary").textContent=orderText;document.getElementById("total").textContent="পণ্যের মোট মূল্য: "+money(sum);document.getElementById("result").classList.remove("hidden");document.getElementById("result").scrollIntoView({behavior:"smooth"})};
+document.getElementById("wa").onclick=()=>{if(orderText)window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(orderText),"_blank","noopener")};
+document.getElementById("copy").onclick=async()=>{try{await navigator.clipboard.writeText(orderText);alert("অর্ডার কপি হয়েছে")}catch(e){alert("কপি করা যায়নি; স্ক্রিনে থাকা বিবরণ ব্যবহার করুন")}};
+document.getElementById("cancel").onclick=()=>{if(confirm("এই পেজে তৈরি অর্ডার বাতিল করবেন? WhatsApp-এ পাঠানো অর্ডার বিক্রেতাকে আলাদাভাবে জানাতে হবে.")){orderText="";document.getElementById("form").reset();items.forEach(p=>{let q=document.getElementById("q-"+p.id);if(q)q.value=0});document.getElementById("result").classList.add("hidden")}};
+render();
+</script></body></html>
