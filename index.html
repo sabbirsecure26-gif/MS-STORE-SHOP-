@@ -116,4 +116,324 @@ const DEFAULT_PRODUCTS = [
     description: "সুস্বাদু খেজুর"
   }
 ];
+const ADMIN_EMAIL = "sabbirsecure26@gmail.com";
+const BUCKET = "products";
+let storeProducts = [];
+let editingProductId = null;
+
+function showToast(message) {
+  const el = $("toast");
+  if (!el) return;
+  el.textContent = message;
+  el.classList.remove("hidden");
+  setTimeout(() => el.classList.add("hidden"), 3500);
+}
+
+function productImage(p) {
+  if (p.image_url) {
+    return `<img src="${esc(p.image_url)}"
+      alt="${esc(p.name)}"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+      <span class="emoji" style="display:none">${esc(p.emoji || "🛍️")}</span>`;
+  }
+  return `<span class="emoji">${esc(p.emoji || "🛍️")}</span>`;
+}
+
+function renderStoreProducts() {
+  const grid = $("products");
+  if (!grid) return;
+
+  const query = ($("search")?.value || "").trim().toLowerCase();
+  const sort = $("sort")?.value || "default";
+  let list = [...storeProducts].filter(p =>
+    `${p.name} ${p.category} ${p.description || ""}`
+      .toLowerCase().includes(query)
+  );
+
+  if (sort === "low") list.sort((a,b) => a.price-b.price);
+  if (sort === "high") list.sort((a,b) => b.price-a.price);
+  if (sort === "name") list.sort((a,b) => a.name.localeCompare(b.name,"bn"));
+
+  if (!list.length) {
+    grid.innerHTML = '<div class="empty">কোনো পণ্য পাওয়া যায়নি।</div>';
+    return;
+  }
+
+  grid.innerHTML = list.map(p => `
+    <article class="product">
+      ${p.tag ? `<span class="tag">${esc(p.tag)}</span>` : ""}
+      <div class="media">${productImage(p)}</div>
+      <h3>${esc(p.name)}</h3>
+      <p class="unit">${esc(p.unit || p.category || "")}</p>
+      <p class="price">${money(p.price)}</p>
+      <p class="muted">${esc(p.description || "")}</p>
+      <div class="product-actions">
+        <button class="add" data-cart="${esc(p.id)}">🛒 কার্টে যোগ</button>
+        <button class="quick" data-buy="${esc(p.id)}">অর্ডার</button>
+      </div>
+    </article>
+  `).join("");
+
+  $("productStatus").textContent = `মোট ${list.length}টি পণ্য`;
+}
+
+function renderAdminProducts() {
+  const box = $("adminProducts");
+  if (!box) return;
+
+  if (!storeProducts.length) {
+    box.innerHTML = '<div class="empty">এখনো কোনো পণ্য নেই।</div>';
+    return;
+  }
+
+  box.innerHTML = storeProducts.map(p => `
+    <div class="admin-product">
+      <div class="fallback">${esc(p.emoji || "🛍️")}</div>
+      <div>
+        <b>${esc(p.name)}</b>
+        <div class="small">${money(p.price)} · ${esc(p.category)}</div>
+      </div>
+      <div class="admin-actions">
+        <button class="secondary" data-edit="${esc(p.id)}">সম্পাদনা</button>
+        <button class="secondary danger" data-delete="${esc(p.id)}">মুছুন</button>
+      </div>
+    </div>
+  `).join("");
+
+  storeProducts.forEach(p => {
+    if (!p.image_url) return;
+    const row = [...box.querySelectorAll(".admin-product")]
+      .find(el => el.querySelector("b")?.textContent === p.name);
+    const fallback = row?.querySelector(".fallback");
+    if (!fallback) return;
+    const img = document.createElement("img");
+    img.src = p.image_url;
+    img.alt = p.name;
+    img.onerror = () => img.replaceWith(fallback);
+    fallback.replaceWith(img);
+  });
+}
+
+async function loadStoreProducts() {
+  if (!db) {
+    storeProducts = DEFAULT_PRODUCTS;
+    renderStoreProducts();
+    renderAdminProducts();
+    showToast("Supabase সেটিংস যাচাই করুন।");
+    return;
+  }
+
+  const { data, error } = await db
+    .from("products").select("*");
+
+  if (error) {
+    storeProducts = DEFAULT_PRODUCTS;
+    showToast("পণ্য লোড হয়নি: " + error.message);
+  } else {
+    storeProducts = data || [];
+  }
+
+  renderStoreProducts();
+  renderAdminProducts();
+}
+
+function resetProductForm() {
+  $("productForm").reset();
+  $("editId").value = "";
+  $("pEmoji").value = "🛍️";
+  editingProductId = null;
+  $("productForm").classList.add("hidden");
+}
+
+$("adminOpen").addEventListener("click", () => {
+  $("modal").classList.remove("hidden");
+});
+
+$("closeAdmin").addEventListener("click", () => {
+  $("modal").classList.add("hidden");
+});
+
+$("newProduct").addEventListener("click", () => {
+  resetProductForm();
+  $("productForm").classList.remove("hidden");
+});
+
+$("cancelEdit").addEventListener("click", resetProductForm);
+
+$("loginForm").addEventListener("submit", async e => {
+  e.preventDefault();
+
+  if (!db) return showToast("Supabase সংযোগ পাওয়া যায়নি।");
+
+  const email = $("adminEmail").value.trim().toLowerCase();
+  const password = $("adminPassword").value;
+
+  if (email !== ADMIN_EMAIL.toLowerCase()) {
+    return showToast("অনুমোদিত অ্যাডমিন ইমেইল ব্যবহার করুন।");
+  }
+
+  const { data, error } = await db.auth.signInWithPassword({
+    email, password
+  });
+
+  if (error) return showToast("লগইন ব্যর্থ: " + error.message);
+
+  if (data.user?.email?.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
+    await db.auth.signOut();
+    return showToast("এই অ্যাকাউন্ট অ্যাডমিন নয়।");
+  }
+
+  $("loginBox").classList.add("hidden");
+  $("adminBox").classList.remove("hidden");
+  $("adminTitle").textContent = "পণ্য পরিচালনা";
+  await loadStoreProducts();
+});
+
+$("logout").addEventListener("click", async () => {
+  await db?.auth.signOut();
+  $("adminBox").classList.add("hidden");
+  $("loginBox").classList.remove("hidden");
+  $("adminPassword").value = "";
+  resetProductForm();
+});
+
+$("productForm").addEventListener("submit", async e => {
+  e.preventDefault();
+
+  if (!db) return showToast("Supabase সংযোগ নেই।");
+
+  const { data: auth } = await db.auth.getUser();
+  if (auth.user?.email?.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
+    return showToast("আগে অ্যাডমিন হিসেবে লগইন করুন।");
+  }
+
+  const file = $("pImage").files[0];
+  if (file && file.size > 5 * 1024 * 1024) {
+    return showToast("ছবি সর্বোচ্চ 5 MB হতে পারবে।");
+  }
+
+  const saveButton = $("productForm").querySelector('[type="submit"]');
+  saveButton.disabled = true;
+
+  try {
+    const id = $("editId").value;
+    const old = storeProducts.find(p => String(p.id) === String(id));
+
+    let image_url = old?.image_url || "";
+
+    if (file) {
+      if (!/^image\/(jpeg|png|webp|gif)$/.test(file.type)) {
+        throw new Error("JPG, PNG, WEBP অথবা GIF ছবি দিন।");
+      }
+
+      const path = `images/${crypto.randomUUID()}-${file.name.replace(/[^a-zA-Z0-9._-]/g,"_")}`;
+
+      const { error: uploadError } = await db.storage
+        .from(BUCKET)
+        .upload(path, file, {
+          upsert: false,
+          contentType: file.type
+        });
+
+      if (uploadError) throw uploadError;
+
+      const { data: publicData } = db.storage
+        .from(BUCKET).getPublicUrl(path);
+
+      image_url = publicData.publicUrl;
+    }
+
+    const product = {
+      name: $("pName").value.trim(),
+      category: $("pCategory").value.trim(),
+      price: Number($("pPrice").value),
+      unit: $("pUnit").value.trim(),
+      tag: $("pTag").value.trim(),
+      emoji: $("pEmoji").value.trim() || "🛍️",
+      description: $("pDescription").value.trim(),
+      image_url
+    };
+
+    if (!product.name || !product.category ||
+        !Number.isFinite(product.price) || product.price < 0) {
+      throw new Error("পণ্যের নাম, ক্যাটাগরি ও সঠিক দাম দিন।");
+    }
+
+    const result = id
+      ? await db.from("products").update(product).eq("id", id).select()
+      : await db.from("products").insert(product).select();
+
+    if (result.error) throw result.error;
+
+    resetProductForm();
+    await loadStoreProducts();
+    showToast("পণ্য সফলভাবে সংরক্ষণ হয়েছে!");
+  } catch (error) {
+    showToast("সংরক্ষণ হয়নি: " + error.message);
+  } finally {
+    saveButton.disabled = false;
+  }
+});
+
+$("adminProducts").addEventListener("click", async e => {
+  const editButton = e.target.closest("[data-edit]");
+  const deleteButton = e.target.closest("[data-delete]");
+
+  if (editButton) {
+    const p = storeProducts.find(x =>
+      String(x.id) === editButton.dataset.edit
+    );
+    if (!p) return;
+
+    $("editId").value = p.id;
+    $("pName").value = p.name || "";
+    $("pCategory").value = p.category || "";
+    $("pPrice").value = p.price ?? 0;
+    $("pUnit").value = p.unit || "";
+    $("pTag").value = p.tag || "";
+    $("pEmoji").value = p.emoji || "🛍️";
+    $("pDescription").value = p.description || "";
+    $("pImage").value = "";
+    $("productForm").classList.remove("hidden");
+  }
+
+  if (deleteButton) {
+    if (!confirm("এই পণ্যটি মুছে ফেলবেন?")) return;
+
+    const { error } = await db.from("products")
+      .delete().eq("id", deleteButton.dataset.delete);
+
+    if (error) return showToast("মুছতে সমস্যা: " + error.message);
+
+    await loadStoreProducts();
+    showToast("পণ্য মুছে ফেলা হয়েছে।");
+  }
+});
+
+$("search").addEventListener("input", renderStoreProducts);
+$("sort").addEventListener("change", renderStoreProducts);
+
+$("products").addEventListener("click", e => {
+  const cart = e.target.closest("[data-cart]");
+  const buy = e.target.closest("[data-buy]");
+  if (!cart && !buy) return;
+
+  const p = storeProducts.find(x =>
+    String(x.id) === (cart || buy).dataset[cart ? "cart" : "buy"]
+  );
+  if (!p) return;
+
+  if (cart) {
+    showToast("কার্ট ফিচারের বাকি কোডও যুক্ত করতে হবে।");
+  } else {
+    $("checkout").scrollIntoView({ behavior: "smooth" });
+    showToast("পণ্য: " + p.name + " — অর্ডার ফর্ম পূরণ করুন।");
+  }
+});
+
+loadStoreProducts();
+</script>
+</body>
+</html>
+
   
