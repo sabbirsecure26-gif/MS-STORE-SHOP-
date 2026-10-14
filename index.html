@@ -71,18 +71,49 @@ const $ = id => document.getElementById(id);
 const money = n => "৳" + Number(n || 0).toLocaleString("en-BD",{maximumFractionDigits:2});
 const esc = s => String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const DEFAULT_PRODUCTS = [
-{id:"demo-apple",name:"আপেল",category:"ফলমূল",price:350,unit:"প্রতি কেজি",emoji:"🍎",image_url:"",tag:"জনপ্রিয়",description:""},
-{id:"demo-orange",name:"কমলা",category:"ফলমূল",price:220,unit:"প্রতি কেজি",emoji:"🍊",image_url:"",tag:"",description:""},
-{id:"demo-grapes",name:"আঙুর",category:"ফলমূল",price:350,unit:"প্রতি কেজি",emoji:"🍇",image_url:"",tag:"",description:"
-{
-  id: "demo-dates",
-  name: "খেজুর",
-  category: "ফলমূল",
-  price: 300,
-  unit: "প্রতি কেজি",
-  emoji: "🌴",
-  image_url: "https://biboavcdgvsiiximfhhg.supabase.co/storage/v1/object/public/products/IMG_ca77ebac-9e1d-4473-8cfc-57b8ff62a165.webp",
-  tag: "নতুন",
-  description: "সুস্বাদু খেজুর"
-}
- 
+  {
+    id: "demo-apple",
+    name: "আপেল",
+    category: "ফলমূল",
+    price: 350,
+    unit: "প্রতি কেজি",
+    emoji: "🍎",
+    image_url: "https://biboavcdgvsiiximfhhg.supabase.co/storage/v1/object/public/products/images%20(8).jpeg",
+    tag: "জনপ্রিয়",
+    description: ""
+  },
+  {
+    id: "demo-orange",
+    name: "কমলা",
+    category: "ফলমূল",
+    price: 220,
+    unit: "প্রতি কেজি",
+    emoji: "🍊",
+    image_url: "",
+    tag: "",
+    description: ""
+  },
+  {
+    id: "demo-grapes",
+    name: "আঙুর",
+    category: "ফলমূল",
+    price: 350,
+    unit: "প্রতি কেজি",
+    emoji: "🍇",
+    image_url: "https://biboavcdgvsiiximfhhg.supabase.co/storage/v1/object/public/products/images%20(7).jpeg",
+    tag: "",
+    description: ""
+  },
+  {
+    id: "demo-dates",
+    name: "খেজুর",
+    category: "ফলমূল",
+    price: 300,
+    unit: "প্রতি কেজি",
+    emoji: "🌴",
+    image_url: "https://biboavcdgvsiiximfhhg.supabase.co/storage/v1/object/public/products/IMG_ca77ebac-9e1d-4473-8cfc-57b8ff62a165.webp",
+    tag: "নতুন",
+    description: "সুস্বাদু খেজুর"
+  }
+];
+  
