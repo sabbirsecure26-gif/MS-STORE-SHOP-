@@ -4,21 +4,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MS STORE &amp; STOP</title>
+<title>MS STORE &amp; STOP | Online Shop</title>
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#fffdf3;color:#183b24}
-header{background:#075b2a;color:white;text-align:center;padding:24px 10px}
-h1{margin:0;font-size:30px}
-.hero{text-align:center;padding:30px 15px;background:#e9f5df}
-.hero h2{font-size:28px;color:#075b2a}
-button{background:#075b2a;color:white;border:0;border-radius:8px;padding:10px 14px;font-size:15px}
-main{max-width:900px;margin:auto;padding:20px}
-.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.item{background:white;padding:18px;border-radius:14px;text-align:center;border:1px solid #dce8d7}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#fffdf2;color:#183b24}
+header{background:#075b2a;color:white;text-align:center;padding:24px 12px}
+header h1{margin:0;font-size:28px}
+.hero{text-align:center;padding:28px 12px;background:#e7f4dc}
+.hero h2{font-size:27px}
+main{max-width:850px;margin:auto;padding:18px}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{background:white;border:1px solid #d8e4d4;border-radius:14px;padding:14px;text-align:center}
 .emoji{font-size:42px}
+.card h3{margin:10px 0}
 .price{font-weight:bold;color:#075b2a}
-footer{text-align:center;background:#075b2a;color:white;padding:22px;margin-top:25px}
-a{color:inherit}
+input,textarea{width:100%;padding:12px;margin:6px 0 12px;border:1px solid #bbb;border-radius:8px;font-size:16px}
+.qty{width:75px;text-align:center}
+button,.btn{display:inline-block;border:0;border-radius:8px;padding:12px 14px;background:#075b2a;color:white;font-size:15px;text-decoration:none;cursor:pointer}
+.secondary{background:#1769d2}
+.whatsapp{background:#168b45}
+.actions{display:grid;gap:10px;margin-top:15px}
+#summary{white-space:pre-wrap;background:#f1f6ec;padding:12px;border-radius:8px}
+footer{text-align:center;padding:22px;background:#075b2a;color:white;margin-top:25px}
+.small{font-size:13px;color:#555}
+@media(max-width:360px){.products{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -26,29 +35,122 @@ a{color:inherit}
 <h1>🌿 MS STORE &amp; STOP</h1>
 <p>প্রকৃতির সেরা, আপনার জন্য</p>
 </header>
+
 <section class="hero">
 <h2>স্বাগতম আমাদের স্টোরে!</h2>
 <p>🍎 ফলমূল • 🥜 বাদাম • 🌴 খেজুর • 🫙 আচার</p>
-<p>আপনার পছন্দের পণ্য বেছে নিন।</p>
+<p>আপনার পছন্দের পণ্য বেছে অর্ডার করুন।</p>
 </section>
+
 <main>
 <h2>🛍️ আমাদের পণ্য</h2>
+<p class="small">দামগুলো নমুনা হিসেবে দেওয়া। বিক্রির আগে আপনার আসল দাম বসিয়ে নিন।</p>
+
 <div class="products">
-<div class="item"><div class="emoji">🍎</div><h3>আপেল</h3><p>প্রতি কেজি</p><p class="price">৳৩৫০</p><button onclick="order('আপেল')">অর্ডার করুন</button></div>
-<div class="item"><div class="emoji">🥜</div><h3>মিক্সড বাদাম</h3><p>প্রতি ২৫০ গ্রাম</p><p class="price">৳২২০</p><button onclick="order('মিক্সড বাদাম')">অর্ডার করুন</button></div>
-<div class="item"><div class="emoji">🌴</div><h3>খেজুর</h3><p>প্রতি ৫০০ গ্রাম</p><p class="price">৳২৫০</p><button onclick="order('খেজুর')">অর্ডার করুন</button></div>
-<div class="item"><div class="emoji">🫙</div><h3>মিক্সড আচার</h3><p>প্রতি বয়াম</p><p class="price">৳১৮০</p><button onclick="order('মিক্সড আচার')">অর্ডার করুন</button></div>
+<div class="card">
+<div class="emoji">🍎</div><h3>আপেল</h3>
+<p>প্রতি কেজি</p><p class="price">৳৩৫০</p>
+<label>পরিমাণ (কেজি)<br><input class="qty" id="q0" type="number" min="0" step="0.5" value="0"></label>
 </div>
-<p style="text-align:center;margin-top:25px">আরও পণ্যের জন্য আমাদের সঙ্গে যোগাযোগ করুন।</p>
+<div class="card">
+<div class="emoji">🥜</div><h3>মিক্সড বাদাম</h3>
+<p>প্রতি ২৫০ গ্রাম</p><p class="price">৳২২০</p>
+<label>পরিমাণ (প্যাকেট)<br><input class="qty" id="q1" type="number" min="0" step="1" value="0"></label>
+</div>
+<div class="card">
+<div class="emoji">🌴</div><h3>খেজুর</h3>
+<p>প্রতি ৫০০ গ্রাম</p><p class="price">৳২৫০</p>
+<label>পরিমাণ (প্যাকেট)<br><input class="qty" id="q2" type="number" min="0" step="1" value="0"></label>
+</div>
+<div class="card">
+<div class="emoji">🫙</div><h3>মিক্সড আচার</h3>
+<p>প্রতি বয়াম</p><p class="price">৳১৮০</p>
+<label>পরিমাণ (বয়াম)<br><input class="qty" id="q3" type="number" min="0" step="1" value="0"></label>
+</div>
+</div>
+
+<h2>📝 অর্ডারের তথ্য</h2>
+<form id="orderForm">
+<label>আপনার নাম *</label>
+<input id="customer" required placeholder="সম্পূর্ণ নাম">
+<label>মোবাইল নম্বর *</label>
+<input id="phone" required type="tel" inputmode="tel" placeholder="01XXXXXXXXX">
+<label>সম্পূর্ণ ডেলিভারি ঠিকানা *</label>
+<textarea id="address" required rows="3" placeholder="জেলা, উপজেলা, এলাকা ও বাড়ির ঠিকানা"></textarea>
+<label>অতিরিক্ত নির্দেশনা (ঐচ্ছিক)</label>
+<textarea id="note" rows="2" placeholder="কোনো বিশেষ নির্দেশনা থাকলে লিখুন"></textarea>
+<button type="submit" style="width:100%">অর্ডারের বিবরণ তৈরি করুন</button>
+</form>
+
+<div id="result" hidden>
+<h2>আপনার অর্ডার</h2>
+<div id="summary"></div>
+<div class="actions">
+<button class="whatsapp" type="button" onclick="sendWhatsApp()">💚 WhatsApp-এ অর্ডার পাঠান</button>
+<button class="secondary" type="button" onclick="copyOrder()">📋 অর্ডার কপি করুন</button>
+<a class="btn secondary" href="https://www.facebook.com/share/1B4GXsK83R/" target="_blank" rel="noopener">🔵 Facebook পেজে যোগাযোগ করুন</a>
+</div>
+<p class="small">WhatsApp-এ পাঠানোর পর বিক্রেতার সঙ্গে অর্ডার নিশ্চিত করুন।</p>
+</div>
 </main>
+
 <footer>
 <h3>MS STORE &amp; STOP</h3>
-<p>ফলমূল | বাদাম | খেজুর | আচার</p>
-<p>অর্ডার করতে Facebook পেজে মেসেজ দিন।</p>
+<p>ফলমূল • বাদাম • খেজুর • আচার</p>
+<p>ধন্যবাদ আমাদের স্টোরে আসার জন্য ❤️</p>
 </footer>
+
 <script>
-function order(product){
-alert("আপনি "+product+" অর্ডার করতে চান। আমাদের Facebook পেজে মেসেজ দিন।");
+const products=[
+{name:"আপেল",price:350,unit:"কেজি"},
+{name:"মিক্সড বাদাম",price:220,unit:"প্যাকেট (২৫০ গ্রাম)"},
+{name:"খেজুর",price:250,unit:"প্যাকেট (৫০০ গ্রাম)"},
+{name:"মিক্সড আচার",price:180,unit:"বয়াম"}
+];
+let orderText="";
+
+document.getElementById("orderForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ let lines=[],total=0;
+ products.forEach((p,i)=>{
+  const qty=Number(document.getElementById("q"+i).value)||0;
+  if(qty<0){return;}
+  if(qty>0){
+   const subtotal=qty*p.price;
+   total+=subtotal;
+   lines.push(p.name+" — "+qty+" "+p.unit+" × ৳"+p.price+" = ৳"+subtotal);
+  }
+ });
+ if(!lines.length){
+  alert("অন্তত একটি পণ্যের পরিমাণ নির্বাচন করুন।");
+  return;
+ }
+ const customer=document.getElementById("customer").value.trim();
+ const phone=document.getElementById("phone").value.trim();
+ const address=document.getElementById("address").value.trim();
+ const note=document.getElementById("note").value.trim();
+ orderText="MS STORE & STOP — নতুন অর্ডার\n\n"+
+ "নাম: "+customer+"\nমোবাইল: "+phone+
+ "\nঠিকানা: "+address+"\n\nপণ্য:\n"+lines.join("\n")+
+ "\n\nপণ্যের মোট মূল্য: ৳"+total+
+ "\nডেলিভারি চার্জ: পরে নিশ্চিত হবে"+
+ "\n\nনির্দেশনা: "+(note||"নেই");
+ document.getElementById("summary").textContent=orderText;
+ document.getElementById("result").hidden=false;
+ document.getElementById("result").scrollIntoView({behavior:"smooth"});
+});
+
+function sendWhatsApp(){
+ const url="https://wa.me/8801969730222?text="+encodeURIComponent(orderText);
+ window.open(url,"_blank");
+}
+async function copyOrder(){
+ try{
+  await navigator.clipboard.writeText(orderText);
+  alert("অর্ডারের বিবরণ কপি হয়েছে।");
+ }catch(e){
+  alert("অর্ডারের বিবরণ কপি করা যায়নি। স্ক্রিন থেকে দেখে লিখে নিতে পারেন।");
+ }
 }
 </script>
 </body>
