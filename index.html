@@ -214,7 +214,7 @@ function renderAdminProducts() {
   });
 }
 
- function loadStorePasyncroducts() {
+ async function loadStoreProducts() {
   if (!db) {
     storeProducts = DEFAULT_PRODUCTS;
     renderStoreProducts();
@@ -436,7 +436,7 @@ function renderCart() {
 
     cartItems.forEach(item => {
       const line = document.createElement("div");
-      line.className = "cart-line";
+      line.className = "cartline";
       line.innerHTML = `
         <div>
           <strong>${esc(item.name)}</strong>
@@ -574,12 +574,12 @@ $("orderForm").addEventListener("submit", e => {
     "নোট: " + $("note").value
   ].join("\n");
 
-  $("message").value = message;
-  $("result").style.display = "block";
+  $("message").textContent = message;
+  $("result").classList.remove("hidden");
 
   $("send").onclick = () => {
     const url = "https://wa.me/" +
-      "8801949949926" + "?text=" + encodeURIComponent(message);
+      WA_NUMBER + "?text=" + encodeURIComponent(message);
     window.open(url, "_blank");
   };
 
@@ -596,6 +596,10 @@ $("orderForm").addEventListener("submit", e => {
 
 $("search").addEventListener("input", renderStoreProducts);
 $("sort").addEventListener("change", renderStoreProducts);
+
+$("wishBtn").addEventListener("click", () => {
+  showToast("পছন্দের তালিকার ফিচার এখনো যুক্ত করা হয়নি।");
+});
 
 $("cartBtn").addEventListener("click", () => {
   $("checkout").scrollIntoView({ behavior: "smooth" });
@@ -617,5 +621,6 @@ $("send").onclick = () => {
 
   window.location.href = url;
 };
-  
-  
+</script>
+</body>
+</html>
