@@ -1,11 +1,9 @@
-
 <!doctype html>
 <html lang="bn">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#075b2a">
-<link rel="icon" type="image/png" href="ms-store-logo.png">
 <meta name="description" content="MS STORE & SHOP — ফলমূল, বাদাম, খেজুর, আচার, মধু ও ঘি">
 <title>MS STORE & SHOP</title>
 <style>
@@ -14,7 +12,7 @@
 .top{background:#043f1e;color:#fff;text-align:center;padding:8px;font-size:13px}
 header{position:sticky;top:0;z-index:20;background:#fffdf5ed;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .head{max-width:1200px;margin:auto;display:flex;align-items:center;gap:12px;padding:10px 15px}
-.brand{display:flex;align-items:center;gap:8px;text-decoration:none;min-width:max-content}.logo{width:48px;height:48px;border-radius:50%;background:#edf6e8;display:block;object-fit:cover;border:1px solid #dbe6d7}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;min-width:max-content}.logo{width:45px;height:45px;border-radius:50%;background:#edf6e8;display:grid;place-items:center;font-size:25px}
 .brand b{display:block;color:var(--g);font-size:clamp(14px,2.3vw,21px)}.brand small{color:var(--muted);font-size:10px}
 .search{flex:1;position:relative;min-width:70px}.search span{position:absolute;left:12px;top:9px}.search input{width:100%;border:1px solid var(--line);border-radius:25px;padding:10px 10px 10px 35px;outline-color:var(--g)}
 button{cursor:pointer}.head button,.secondary{border:1px solid var(--line);background:#fff;color:var(--g);padding:9px 11px;border-radius:11px;white-space:nowrap}
@@ -33,15 +31,14 @@ main{max-width:1200px;margin:auto;padding:20px 15px 50px}.section-head{display:f
 .cartline{display:grid;grid-template-columns:1fr auto;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}.cartline:last-child{border:0}.small{font-size:12px;color:var(--muted);margin-top:4px}.qctrl{display:flex;align-items:center;gap:6px}.qctrl button{width:29px;height:29px;background:#edf6e8;color:var(--g);border:1px solid var(--line);border-radius:8px}.remove{border:0;background:none;color:var(--red);padding:5px}.sumrow{display:flex;justify-content:space-between;padding:8px 0}.grand{font-size:20px;font-weight:900;color:var(--g);border-top:1px solid var(--line);margin-top:6px;padding-top:13px}
 .field{margin:10px 0}.field label{display:block;font-weight:700;font-size:13px;margin-bottom:5px}.field input,.field textarea,.field select{width:100%;border:1px solid #cddac8;border-radius:9px;padding:11px;background:#fff;outline-color:var(--g)}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.check{display:flex;gap:8px;font-size:12px;color:var(--muted);margin:12px 0}.actions{display:grid;gap:8px;margin-top:12px}.result{background:#f4f8ef;border-radius:10px;padding:12px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.65}
 .faq details{padding:12px 0;border-bottom:1px solid var(--line)}footer{background:#043f1e;color:#fff;padding:30px 18px}.foot{max-width:1200px;margin:auto;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:20px}.foot a,.foot p{color:#dbe9dc;font-size:13px;line-height:1.8}.foot a{display:block}.copy{text-align:center;border-top:1px solid #ffffff2b;padding-top:15px;margin-top:20px;font-size:12px;color:#dbe9dc}
-.fab{position:fixed;right:14px;bottom:14px;z-index:30;border:0;border-radius:30px;background:#168b45;color:#fff;padding:12px 15px;box-shadow:0 8px 25px #0002}.toast{position:fixed;left:50%;bottom:70px;transform:translateX(-50%);background:#173b25;color:#fff;padding:11px 15px;border-radius:10px;z-index:80;max-width:90%;text-align:center}.hidden{display:none!important}
-#adminOpen{display:none!important}.modalbg{position:fixed;inset:0;background:#0a2015a6;z-index:60;display:grid;place-items:center;padding:12px}.modal{background:#fff;border-radius:16px;padding:18px;width:min(760px,100%);max-height:92vh;overflow:auto}.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.admin-tools{display:flex;gap:8px;flex-wrap:wrap}.admin-product{display:grid;grid-template-columns:58px 1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px;margin:8px 0}.admin-product img{width:58px;height:58px;object-fit:cover;border-radius:8px}.admin-product .fallback{width:58px;height:58px;display:grid;place-items:center;background:#edf6e8;border-radius:8px;font-size:25px}.danger{background:#fff1f0;color:#b42318;border:1px solid #f2c3bf}.notice{background:#fff8df;border:1px solid #f1e2a7;padding:12px;border-radius:10px;font-size:13px;line-height:1.6}summary{cursor:pointer;font-weight:700}
+.fab{position:fixed;right:14px;bottom:14px;z-index:30;border:0;border-radius:30px;background:#168b45;color:#fff;padding:12px 15px;box-shadow:0 8px 25px #0002}.toast{position:fixed;left:50%;bottom:70px;transform:translateX(-50%);background:#173b25;color:#fff;padding:11px 15px;border-radius:10px;z-index:80;max-width:90%;text-align:center}.hidden{display:none!important}.modalbg{position:fixed;inset:0;background:#0a2015a6;z-index:60;display:grid;place-items:center;padding:12px}.modal{background:#fff;border-radius:16px;padding:18px;width:min(760px,100%);max-height:92vh;overflow:auto}.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.admin-tools{display:flex;gap:8px;flex-wrap:wrap}.admin-product{display:grid;grid-template-columns:58px 1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px;margin:8px 0}.admin-product img{width:58px;height:58px;object-fit:cover;border-radius:8px}.admin-product .fallback{width:58px;height:58px;display:grid;place-items:center;background:#edf6e8;border-radius:8px;font-size:25px}.danger{background:#fff1f0;color:#b42318;border:1px solid #f2c3bf}.notice{background:#fff8df;border:1px solid #f1e2a7;padding:12px;border-radius:10px;font-size:13px;line-height:1.6}summary{cursor:pointer;font-weight:700}
 @media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.trust{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}.foot{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.head{gap:7px;padding:8px}.logo{width:36px;height:36px}.brand{gap:5px}.brand b{font-size:12px}.brand small{display:none}.head .label{display:none}.head button{padding:8px}.search input{font-size:12px;padding:9px 6px 9px 30px}.search span{left:9px;top:7px}.hero-in{grid-template-columns:1fr;padding:25px 15px 20px}.hero-art{min-height:165px;grid-row:1}.bowl{width:165px;font-size:56px}.f1{left:7%;top:0}.f2{right:5%;bottom:0}.hero h1{font-size:34px;margin:9px 0}.hero p{font-size:14px}.trust{padding:8px;gap:6px}.trust div{padding:8px}.trust b{font-size:11px}.trust small{font-size:9px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.product{padding:8px}.media{height:105px}.emoji{font-size:46px}.product h3{font-size:14px}.price{font-size:16px}.product-actions button{font-size:11px;padding:8px 3px}.tag{top:13px;left:13px}.promo{display:block;padding:18px}.promo .btn{margin-top:12px}.two,.admin-grid{grid-template-columns:1fr}.panel{padding:13px}.foot{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.admin-product{grid-template-columns:48px 1fr}.admin-product img,.admin-product .fallback{width:48px;height:48px}.admin-product .admin-actions{grid-column:2}}
 </style>
 </head>
 <body>
 <div class="top">🌿 সতেজ পণ্য • সহজ অর্ডার • WhatsApp-এ সরাসরি যোগাযোগ</div>
-<header><div class="head"><a class="brand" href="#home"><img class="logo" src="ms-store-logo.png" alt="MS STORE & SHOP লোগো"><span><b>MS STORE &amp; SHOP</b><small>Freshness in every choice</small></span></a><div class="search"><span>🔎</span><input id="search" type="search" placeholder="পণ্য খুঁজুন..." aria-label="পণ্য খুঁজুন"></div><button id="wishBtn">♡ <span class="label">পছন্দ</span> <b id="wishCount">0</b></button><button id="cartBtn">🛒 <span class="label">কার্ট</span> <b id="count">0</b></button></div><nav><a href="#home">হোম</a><a href="#shop">সব পণ্য</a><a href="#features">সুবিধা</a><a href="#checkout">অর্ডার</a><a href="#contact">যোগাযোগ</a></nav></header>
+<header><div class="head"><a class="brand" href="#home"><div class="logo">🌿</div><span><b>MS STORE &amp; SHOP</b><small>Freshness in every choice</small></span></a><div class="search"><span>🔎</span><input id="search" type="search" placeholder="পণ্য খুঁজুন..." aria-label="পণ্য খুঁজুন"></div><button id="wishBtn">♡ <span class="label">পছন্দ</span> <b id="wishCount">0</b></button><button id="cartBtn">🛒 <span class="label">কার্ট</span> <b id="count">0</b></button></div><nav><a href="#home">হোম</a><a href="#shop">সব পণ্য</a><a href="#features">সুবিধা</a><a href="#checkout">অর্ডার</a><a href="#contact">যোগাযোগ</a></nav></header>
 <section class="hero" id="home"><div class="hero-in"><div><span class="pill">🌱 আপনার অনলাইন ফুড স্টোর</span><h1>ভালো খাবার,<br>সুন্দর জীবনের শুরু</h1><p>ফলমূল, পুষ্টিকর বাদাম, খেজুর, ঘরোয়া স্বাদের আচার, মধু ও ঘি—পছন্দের পণ্য বেছে সহজেই অর্ডার করুন।</p><a class="btn" href="#shop">🛍️ কেনাকাটা শুরু করুন</a> <a class="btn alt" href="#checkout">অর্ডার করুন →</a></div><div class="hero-art"><div class="bowl">🍎🍊🥭<br>🥜🍇🌴</div><div class="float f1">🌿 যত্নে বাছাই</div><div class="float f2">💚 সহজ অর্ডার</div></div></div></section>
 <section class="trust" id="features"><div>🛒 <span><b>সহজ অর্ডার</b><small>কয়েক ধাপে</small></span></div><div>💬 <span><b>সরাসরি যোগাযোগ</b><small>WhatsApp সাপোর্ট</small></span></div><div>🍃 <span><b>বিভিন্ন পণ্য</b><small>এক জায়গায় সব</small></span></div><div>📦 <span><b>ডেলিভারি নিশ্চিতকরণ</b><small>চার্জ পরে জানানো হবে</small></span></div></section>
 <main>
@@ -54,7 +51,7 @@ main{max-width:1200px;margin:auto;padding:20px 15px 50px}.section-head{display:f
 <footer id="contact"><div class="foot"><div><h3>MS STORE &amp; SHOP</h3><p>ফলমূল, বাদাম, খেজুর, আচার, মধু ও ঘি—আপনার পছন্দের পণ্য এক জায়গায়।</p></div><div><h3>দ্রুত লিংক</h3><a href="#shop">সব পণ্য</a><a href="#checkout">অর্ডার করুন</a><a href="#features">আমাদের সুবিধা</a></div><div><h3>যোগাযোগ</h3><p>WhatsApp: 01949949926</p><a href="https://www.facebook.com/share/1B4GXsK83R/" target="_blank" rel="noopener noreferrer">Facebook পেজ ↗</a></div></div><div class="copy">© <span id="year"></span> MS STORE &amp; SHOP. All rights reserved.</div></footer>
 <button class="fab" id="waFab">💬 WhatsApp</button><div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
 <div id="modal" class="modalbg hidden"><div class="modal"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><h2 id="adminTitle">অ্যাডমিন লগইন</h2><button class="secondary" id="closeAdmin">বন্ধ ✕</button></div>
-<div id="loginBox"><p class="muted">শুধু অনুমোদিত অ্যাডমিন অ্যাকাউন্ট দিয়ে লগইন করুন।</p><form id="loginForm"><div class="field"><label for="adminEmail">অ্যাডমিন ইমেইল</label><input id="adminEmail" type="email" required autocomplete="username" placeholder="অ্যাডমিন ইমেইল লিখুন"></div><div class="field"><label for="adminPassword">পাসওয়ার্ড</label><input id="adminPassword" type="password" required autocomplete="current-password"></div><button class="btn" type="submit" style="width:100%">নিরাপদে লগইন</button></form></div>
+<div id="loginBox"><p class="muted">শুধু অনুমোদিত অ্যাডমিন অ্যাকাউন্ট দিয়ে লগইন করুন।</p><form id="loginForm"><div class="field"><label for="adminEmail">অ্যাডমিন ইমেইল</label><input id="adminEmail" type="email" required autocomplete="username" value="sabbirsecure26@gmail.com"></div><div class="field"><label for="adminPassword">পাসওয়ার্ড</label><input id="adminPassword" type="password" required autocomplete="current-password"></div><button class="btn" type="submit" style="width:100%">নিরাপদে লগইন</button></form></div>
 <div id="adminBox" class="hidden"><div class="notice">এই প্যানেল থেকে পণ্য যোগ, ছবি আপলোড, সম্পাদনা ও মুছে ফেলতে পারবেন। সার্ভারের অনুমতি না থাকলে পরিবর্তন সংরক্ষণ হবে না।</div><div class="admin-tools" style="margin:12px 0"><button class="btn" id="newProduct">＋ নতুন পণ্য</button><button class="secondary" id="logout">লগআউট</button></div>
 <form id="productForm" class="hidden"><input id="editId" type="hidden"><div class="admin-grid"><div class="field"><label for="pName">পণ্যের নাম *</label><input id="pName" required maxlength="120"></div><div class="field"><label for="pCategory">ক্যাটাগরি *</label><input id="pCategory" required maxlength="80" placeholder="যেমন: ফলমূল"></div><div class="field"><label for="pPrice">দাম (৳) *</label><input id="pPrice" type="number" min="0" step="0.01" required></div><div class="field"><label for="pUnit">একক</label><input id="pUnit" maxlength="80" placeholder="প্রতি কেজি"></div><div class="field"><label for="pTag">ট্যাগ</label><input id="pTag" maxlength="40" placeholder="জনপ্রিয় / নতুন"></div><div class="field"><label for="pEmoji">ছবি না থাকলে ইমোজি</label><input id="pEmoji" maxlength="8" value="🛍️"></div></div><div class="field"><label for="pDescription">বিবরণ</label><textarea id="pDescription" rows="2" maxlength="1000"></textarea></div><div class="field"><label for="pImage">পণ্যের ছবি (ঐচ্ছিক)</label><input id="pImage" type="file" accept="image/png,image/jpeg,image/webp,image/gif"><small class="muted">JPG, PNG, WEBP বা GIF; সর্বোচ্চ 5 MB।</small></div><div class="actions"><button class="btn" type="submit">💾 পণ্য সংরক্ষণ</button><button class="secondary" type="button" id="cancelEdit">বাতিল</button></div></form><h3>পণ্যের তালিকা</h3><div id="adminProducts"></div></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -171,7 +168,7 @@ function renderStoreProducts() {
       <p class="muted">${esc(p.description || "")}</p>
       <div class="product-actions">
         <button class="add" data-cart="${esc(p.id)}">🛒 কার্টে যোগ</button>
-        <button class="quick" data-buy="${esc(p.id)}">অর্ডার</button><button class="quick" data-wish="${esc(p.id)}" aria-label="পছন্দের তালিকা">${wishIds.includes(String(p.id)) ? "♥" : "♡"}</button>
+        <button class="quick" data-buy="${esc(p.id)}">অর্ডার</button>
       </div>
     </article>
   `).join("");
@@ -247,10 +244,21 @@ function resetProductForm() {
   $("productForm").classList.add("hidden");
 }
 
-
+// Admin panel is not linked anywhere in the public storefront.
+// Owner: open the site URL with #owner-panel appended, then sign in.
+function openAdminFromOwnerLink() {
+  if (window.location.hash === "#owner-panel") {
+    $("modal").classList.remove("hidden");
+  }
+}
+openAdminFromOwnerLink();
+window.addEventListener("hashchange", openAdminFromOwnerLink);
 
 $("closeAdmin").addEventListener("click", () => {
   $("modal").classList.add("hidden");
+  if (window.location.hash === "#owner-panel") {
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+  }
 });
 
 $("newProduct").addEventListener("click", () => {
@@ -399,7 +407,6 @@ $("adminProducts").addEventListener("click", async e => {
 
   if (deleteButton) {
     if (!confirm("এই পণ্যটি মুছে ফেলবেন?")) return;
-
     const { error } = await db.from("products")
       .delete().eq("id", deleteButton.dataset.delete);
 
@@ -410,44 +417,10 @@ $("adminProducts").addEventListener("click", async e => {
   }
 });
 
-$("filters").addEventListener("click", e => {
-  const b = e.target.closest("[data-category]");
-  if (!b) return;
-  activeCategory = b.dataset.category;
-  $("filters").querySelectorAll(".chip").forEach(x => x.classList.toggle("active", x === b));
-  renderStoreProducts();
-});
 $("search").addEventListener("input", renderStoreProducts);
 $("sort").addEventListener("change", renderStoreProducts);
 
 let cartItems = [];
-const safeRead = (key, fallback) => { try { const v = JSON.parse(localStorage.getItem(key)); return v ?? fallback; } catch { return fallback; } };
-cartItems = safeRead("ms_store_cart_v1", []);
-let wishIds = safeRead("ms_store_wishlist_v1", []);
-function saveLocalState() {
-  try {
-    localStorage.setItem("ms_store_cart_v1", JSON.stringify(cartItems));
-    localStorage.setItem("ms_store_wishlist_v1", JSON.stringify(wishIds));
-  } catch {}
-}
-function renderWishCount() {
-  $("wishCount").textContent = wishIds.length;
-}
-function renderFilters() {
-  const categories = ["সব পণ্য", ...new Set(storeProducts.map(p => p.category).filter(Boolean))];
-  const box = $("filters");
-  if (!box) return;
-  box.innerHTML = categories.map((c,i) => `<button class="chip ${i===0 ? "active" : ""}" data-category="${esc(c)}">${esc(c)}</button>`).join("");
-  activeCategory = "সব পণ্য";
-}
-let activeCategory = "সব পণ্য";
-function toggleWishlist(id) {
-  const key = String(id);
-  wishIds = wishIds.includes(key) ? wishIds.filter(x => x !== key) : [...wishIds, key];
-  saveLocalState(); renderWishCount(); renderStoreProducts();
-  showToast(wishIds.includes(key) ? "পছন্দের তালিকায় যোগ হয়েছে" : "পছন্দের তালিকা থেকে সরানো হয়েছে");
-}
-
 
 function renderCart() {
   const cartLines = $("cartLines");
@@ -632,13 +605,7 @@ $("search").addEventListener("input", renderStoreProducts);
 $("sort").addEventListener("change", renderStoreProducts);
 
 $("wishBtn").addEventListener("click", () => {
-  if (!wishIds.length) { showToast("এখনো পছন্দের তালিকায় পণ্য নেই"); return; }
-  activeCategory = "সব পণ্য";
-  $("search").value = "";
-  const saved = storeProducts.filter(p => wishIds.includes(String(p.id)));
-  $("products").innerHTML = saved.length ? saved.map(p => `<article class="product"><div class="media">${productImage(p)}</div><h3>${esc(p.name)}</h3><p class="unit">${esc(p.unit || p.category || "")}</p><p class="price">${money(p.price)}</p><div class="product-actions"><button class="add" data-cart="${esc(p.id)}">🛒 কার্টে যোগ</button><button class="quick" data-wish="${esc(p.id)}">♥ সরান</button></div></article>`).join("") : '<div class="empty">পছন্দের তালিকায় পণ্য পাওয়া যায়নি।</div>';
-  $("productStatus").textContent = `পছন্দের তালিকায় ${saved.length}টি পণ্য`;
-  $("shop").scrollIntoView({behavior:"smooth"});
+  showToast("পছন্দের তালিকার ফিচার এখনো যুক্ত করা হয়নি।");
 });
 
 $("cartBtn").addEventListener("click", () => {
@@ -650,13 +617,6 @@ $("waFab").addEventListener("click", () => {
   const url = "https://wa.me/" + WA_NUMBER;
   window.open(url, "_blank");
 });
-  // Admin entry point: open the site URL with ?admin=1. No public admin button is shown.
-  if (new URLSearchParams(location.search).get("admin") === "1") {
-    $("modal").classList.remove("hidden");
-    $("adminOpen").setAttribute("aria-hidden", "true");
-  }
-  renderWishCount();
-  renderCart();
   loadStoreProducts();
   
 $("send").onclick = () => {
